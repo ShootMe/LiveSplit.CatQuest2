@@ -28,9 +28,6 @@
             this.flowMain = new System.Windows.Forms.FlowLayoutPanel();
             this.btnClearLog = new System.Windows.Forms.Button();
             this.chkLog = new System.Windows.Forms.CheckBox();
-            this.chkNoPause = new System.Windows.Forms.CheckBox();
-            this.chkFPSLock = new System.Windows.Forms.CheckBox();
-            this.chkDebug = new System.Windows.Forms.CheckBox();
             this.tooltips = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
@@ -87,47 +84,10 @@
             this.tooltips.SetToolTip(this.chkLog, "Will monitor thegames state and write it to the Log for Debug purposes");
             this.chkLog.UseVisualStyleBackColor = true;
             // 
-            // chkNoPause
-            // 
-            this.chkNoPause.AutoSize = true;
-            this.chkNoPause.Location = new System.Drawing.Point(3, 8);
-            this.chkNoPause.Name = "chkNoPause";
-            this.chkNoPause.Size = new System.Drawing.Size(73, 17);
-            this.chkNoPause.TabIndex = 1;
-            this.chkNoPause.Text = "No Pause";
-            this.tooltips.SetToolTip(this.chkNoPause, "Will allow the game to run even when it doesn\'t have focus");
-            this.chkNoPause.UseVisualStyleBackColor = true;
-            // 
-            // chkFPSLock
-            // 
-            this.chkFPSLock.AutoSize = true;
-            this.chkFPSLock.Location = new System.Drawing.Point(77, 8);
-            this.chkFPSLock.Name = "chkFPSLock";
-            this.chkFPSLock.Size = new System.Drawing.Size(73, 17);
-            this.chkFPSLock.TabIndex = 2;
-            this.chkFPSLock.Text = "FPS Lock";
-            this.tooltips.SetToolTip(this.chkFPSLock, "Trys to cap the max FPS to 60");
-            this.chkFPSLock.UseVisualStyleBackColor = true;
-            // 
-            // chkDebug
-            // 
-            this.chkDebug.AutoSize = true;
-            this.chkDebug.Location = new System.Drawing.Point(152, 8);
-            this.chkDebug.Name = "chkDebug";
-            this.chkDebug.Size = new System.Drawing.Size(96, 17);
-            this.chkDebug.TabIndex = 3;
-            this.chkDebug.Text = "Disable Debug";
-            this.tooltips.SetToolTip(this.chkDebug, "Will disable Debug and controls when the timer starts and reactivates it when fin" +
-        "ished");
-            this.chkDebug.UseVisualStyleBackColor = true;
-            // 
             // UserSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.chkDebug);
-            this.Controls.Add(this.chkFPSLock);
-            this.Controls.Add(this.chkNoPause);
             this.Controls.Add(this.chkLog);
             this.Controls.Add(this.btnClearLog);
             this.Controls.Add(this.flowMain);
@@ -146,9 +106,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowMain;
         private System.Windows.Forms.Button btnClearLog;
         private System.Windows.Forms.CheckBox chkLog;
-        private System.Windows.Forms.CheckBox chkNoPause;
-        private System.Windows.Forms.CheckBox chkFPSLock;
-        private System.Windows.Forms.CheckBox chkDebug;
         private System.Windows.Forms.ToolTip tooltips;
     }
 }
