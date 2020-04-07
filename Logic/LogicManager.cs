@@ -87,11 +87,14 @@ namespace LiveSplit.CatQuest2 {
                 switch (split.Type) {
                     case SplitType.ManualSplit:
                         break;
-                    case SplitType.DungeonEnter:
-                        CheckDungeon(split, false);
+                    case SplitType.AreaEnter:
+                        CheckArea(split, true);
+                        break;
+                    case SplitType.AreaExit:
+                        CheckArea(split, false);
                         break;
                     case SplitType.DungeonComplete:
-                        CheckDungeon(split, true);
+                        CheckDungeon(split);
                         break;
                     case SplitType.Level:
                         int level = Memory.Level();
@@ -110,26 +113,37 @@ namespace LiveSplit.CatQuest2 {
                 }
             }
         }
-        private void CheckDungeon(Split split, bool complete) {
+        private void CheckDungeon(Split split) {
             SplitDungeon dungeon = Utility.GetEnumValue<SplitDungeon>(split.Value);
+            string sceneToCheck = string.Empty;
             switch (dungeon) {
-                case SplitDungeon.BraveCave: CheckScene(complete, "Cave_bravecave"); break;
-                case SplitDungeon.SeasideCove: CheckScene(complete, "Cave_seasidecove"); break;
-                case SplitDungeon.CaveGrotto: CheckScene(complete, "Cave_cavegrotto"); break;
+                case SplitDungeon.BraveCave: sceneToCheck = "Cave_bravecave"; break;
+                case SplitDungeon.SeasideCove: sceneToCheck = "Cave_seasidecove"; break;
+                case SplitDungeon.CaveGrotto: sceneToCheck = "Cave_cavegrotto"; break;
+            }
+
+            int dungeonsComplete = Memory.DungeonsCleared();
+            ShouldSplit = dungeonsComplete > lastIntValue && Memory.SceneName() == sceneToCheck;
+            lastIntValue = dungeonsComplete;
+        }
+        private void CheckArea(Split split, bool enter) {
+            SplitArea area = Utility.GetEnumValue<SplitArea>(split.Value);
+            switch (area) {
+                case SplitArea.BraveCave: CheckScene(enter, "Cave_bravecave"); break;
+                case SplitArea.SeasideCove: CheckScene(enter, "Cave_seasidecove"); break;
+                case SplitArea.CaveGrotto: CheckScene(enter, "Cave_cavegrotto"); break;
             }
         }
-        private void CheckScene(bool complete, string sceneToCheck) {
+        private void CheckScene(bool enter, string sceneToCheck) {
             string scene = Memory.SceneName();
             if (string.IsNullOrEmpty(scene)) { return; }
 
-            if (scene.Equals(sceneToCheck, StringComparison.OrdinalIgnoreCase)) {
-                if (complete) {
-                    int dungeonsComplete = Memory.DungeonsCleared();
-                    ShouldSplit = dungeonsComplete > lastIntValue;
-                    lastIntValue = dungeonsComplete;
-                } else {
-                    ShouldSplit = !sceneToCheck.Equals(lastStrValue, StringComparison.OrdinalIgnoreCase);
-                }
+            bool current = scene.Equals(sceneToCheck, StringComparison.OrdinalIgnoreCase);
+            bool previous = sceneToCheck.Equals(lastStrValue, StringComparison.OrdinalIgnoreCase);
+            if (enter) {
+                ShouldSplit = current && !previous;
+            } else {
+                ShouldSplit = !current && previous;
             }
             lastStrValue = scene;
         }

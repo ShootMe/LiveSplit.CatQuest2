@@ -93,6 +93,7 @@
   <ItemGroup>
     <Compile Include="Logic\LogManager.cs" />
     <Compile Include="Logic\LogicManager.cs" />
+    <Compile Include="Logic\SplitArea.cs" />
     <Compile Include="Logic\SplitDungeon.cs" />
     <Compile Include="Logic\Utility.cs" />
     <Compile Include="Memory\Equipment.cs" />

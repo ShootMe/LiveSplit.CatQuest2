@@ -3,10 +3,12 @@ namespace LiveSplit.CatQuest2 {
     public enum SplitType {
         [Description("Manual Split")]
         ManualSplit,
+        [Description("Area (Enter)")]
+        AreaEnter,
+        [Description("Area (Exit)")]
+        AreaExit,
         [Description("Chest")]
         Chest,
-        [Description("Dungeon (Enter)")]
-        DungeonEnter,
         [Description("Dungeon (Complete)")]
         DungeonComplete,
         [Description("Game Start")]

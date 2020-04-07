@@ -25,7 +25,11 @@ namespace LiveSplit.CatQuest2 {
             isLoading = true;
             if (updateValue) {
                 switch (UserSplit.Type) {
-                    case SplitType.DungeonEnter:
+                    case SplitType.AreaEnter:
+                    case SplitType.AreaExit:
+                        cboValue.DataSource = Utility.GetEnumList<SplitArea>();
+                        cboValue.SelectedValue = Utility.GetEnumValue<SplitArea>(UserSplit.Value);
+                        break;
                     case SplitType.DungeonComplete:
                         cboValue.DataSource = Utility.GetEnumList<SplitDungeon>();
                         cboValue.SelectedValue = Utility.GetEnumValue<SplitDungeon>(UserSplit.Value);
@@ -55,7 +59,8 @@ namespace LiveSplit.CatQuest2 {
             } else {
                 if (nextControlType != UserSplit.Type) {
                     switch (nextControlType) {
-                        case SplitType.DungeonEnter:
+                        case SplitType.AreaEnter:
+                        case SplitType.AreaExit: DefaultValue = SplitArea.BraveCave; break;
                         case SplitType.DungeonComplete: DefaultValue = SplitDungeon.BraveCave; break;
                     }
                     UserSplit.Value = DefaultValue.ToString();
