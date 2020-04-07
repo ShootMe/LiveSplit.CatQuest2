@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/bin
+/Components/LiveSplit.CatQuest2.exe
+/.vs
+/obj
+/LiveSplit.CatQuest2.csproj.user
