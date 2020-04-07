@@ -2,43 +2,48 @@
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 namespace LiveSplit.CatQuest2 {
-    [StructLayout(LayoutKind.Explicit, Size = 28, Pack = 1)]
-    public unsafe struct QuestData {
+    [StructLayout(LayoutKind.Explicit, Size = 36, Pack = 1)]
+    public struct QuestData {
         [FieldOffset(0)]
-        public uint Title;
+        public uint Guid;
         [FieldOffset(4)]
-        public uint TitleTerm;
+        public uint title;
         [FieldOffset(8)]
-        public uint Prerequisites;
+        public uint titleTerm;
         [FieldOffset(12)]
-        public bool MainQuest;
-        [FieldOffset(13)]
-        public bool SideQuest;
+        public uint prerequisites;
         [FieldOffset(16)]
-        public int Level;
+        public uint nextQuest;
         [FieldOffset(20)]
-        public int Gold;
+        public bool isMainQuest;
+        [FieldOffset(21)]
+        public bool isSideQuest;
         [FieldOffset(24)]
-        public int Exp;
+        public int requiredLevel;
+        [FieldOffset(28)]
+        public int gold;
+        [FieldOffset(32)]
+        public int exp;
         public Quest Create(Process program) {
-            string title = program.ReadString((IntPtr)Title, 0x0);
-            return new Quest() { Title = title, MainQuest = MainQuest, SideQuest = SideQuest, Exp = Exp, Gold = Gold, Level = Level };
+            string guid = program.ReadString((IntPtr)Guid, 0x0);
+            string name = program.ReadString((IntPtr)title, 0x0);
+            return new Quest() { Guid = guid, Name = name, MainQuest = isMainQuest, SideQuest = isSideQuest, Exp = exp, Gold = gold, Level = requiredLevel };
         }
     }
     public class Quest {
-        public string Title;
+        public string Guid;
+        public string Name;
         public bool MainQuest;
         public bool SideQuest;
-        public bool Completed;
         public int Level;
         public int Gold;
         public int Exp;
 
         public Quest Clone() {
-            return new Quest() { Completed = Completed, Exp = Exp, Gold = Gold, Level = Level, MainQuest = MainQuest, SideQuest = SideQuest, Title = Title };
+            return new Quest() { Guid = Guid, Exp = Exp, Gold = Gold, Level = Level, MainQuest = MainQuest, SideQuest = SideQuest, Name = Name };
         }
         public override string ToString() {
-            return $"{Title} (Completed={Completed})(Main={MainQuest})(Gold={Gold})(Exp={Exp})";
+            return $"{Name} (Guid={Guid})(Main={MainQuest})(Gold={Gold})(Exp={Exp})";
         }
     }
 }

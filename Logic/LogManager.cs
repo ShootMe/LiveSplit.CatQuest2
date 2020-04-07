@@ -17,14 +17,19 @@ namespace LiveSplit.CatQuest2 {
         RoyalArts,
         Chests,
         Dungeons,
-        Spells
+        Spells,
+        Keys,
+        FinalQuest,
+        Equipment
     }
     public class LogManager {
         public List<ILogEntry> LogEntries = new List<ILogEntry>();
         private Dictionary<LogObject, string> currentValues = new Dictionary<LogObject, string>();
         private Dictionary<string, Quest> currentQuests = new Dictionary<string, Quest>(StringComparer.OrdinalIgnoreCase);
-        private Dictionary<string, Chest> currentChests = new Dictionary<string, Chest>(StringComparer.OrdinalIgnoreCase);
+        private Dictionary<string, GuidItem> currentChests = new Dictionary<string, GuidItem>(StringComparer.OrdinalIgnoreCase);
         private Dictionary<string, Spell> currentSpells = new Dictionary<string, Spell>(StringComparer.OrdinalIgnoreCase);
+        private Dictionary<string, GuidItem> currentKeys = new Dictionary<string, GuidItem>(StringComparer.OrdinalIgnoreCase);
+        private Dictionary<string, Equipment> currentEquipment = new Dictionary<string, Equipment>(StringComparer.OrdinalIgnoreCase);
         public bool EnableLogging;
 
         public LogManager() {
@@ -54,7 +59,7 @@ namespace LiveSplit.CatQuest2 {
 
             lock (LogEntries) {
                 DateTime date = DateTime.Now;
-                bool isLoading = logic.Memory.IsLoading();
+                IntPtr savedGame = logic.Memory.SavedGame();
 
                 foreach (LogObject key in Enum.GetValues(typeof(LogObject))) {
                     string previous = currentValues[key];
@@ -64,16 +69,19 @@ namespace LiveSplit.CatQuest2 {
                         case LogObject.CurrentSplit: current = $"{logic.CurrentSplit} ({GetCurrentSplit(logic, settings)})"; break;
                         case LogObject.Pointers: current = logic.Memory.GamePointers(); break;
                         case LogObject.Version: current = MemoryManager.Version.ToString(); break;
-                        case LogObject.Loading: current = isLoading.ToString(); break;
-                        case LogObject.Quests: CheckQuests(logic); break;
-                        case LogObject.Chests: CheckChests(logic); break;
-                        case LogObject.Spells: CheckSpells(logic); break;
+                        case LogObject.Loading: current = logic.Memory.IsLoading().ToString(); break;
+                        case LogObject.Quests: if (savedGame != IntPtr.Zero) { CheckItems<Quest>(key, currentQuests, logic.Memory.Quests()); } break;
+                        case LogObject.Chests: if (savedGame != IntPtr.Zero) { CheckItems<GuidItem>(key, currentChests, logic.Memory.Chests()); } break;
+                        case LogObject.Spells: if (savedGame != IntPtr.Zero) { CheckItems<Spell>(key, currentSpells, logic.Memory.Spells()); } break;
+                        case LogObject.Keys: if (savedGame != IntPtr.Zero) { CheckItems<GuidItem>(key, currentKeys, logic.Memory.Keys()); } break;
+                        case LogObject.Equipment: if (savedGame != IntPtr.Zero) { CheckItems<Equipment>(key, currentEquipment, logic.Memory.Equipment()); } break;
                         case LogObject.Gold: current = logic.Memory.Gold().ToString(); break;
                         case LogObject.Level: current = logic.Memory.Level().ToString(); break;
                         case LogObject.Experience: current = logic.Memory.Experience().ToString(); break;
                         case LogObject.Dungeons: current = logic.Memory.DungeonsCleared().ToString(); break;
                         case LogObject.RoyalArts: current = logic.Memory.PlayerRoyalArts().ToString(); break;
                         case LogObject.Scene: current = logic.Memory.SceneName(); break;
+                        case LogObject.FinalQuest: current = logic.Memory.FinalQuestCompleted().ToString(); break;
                         case LogObject.SceneType: current = logic.Memory.GameSceneType().ToString(); break;
                         case LogObject.SavedGame: current = logic.Memory.SavedGame().ToString("X"); break;
                     }
@@ -85,78 +93,30 @@ namespace LiveSplit.CatQuest2 {
                 }
             }
         }
-        private void CheckQuests(LogicManager logic) {
+        private void CheckItems<T>(LogObject type, Dictionary<string, T> currentItems, Dictionary<string, T> newItems) {
             DateTime date = DateTime.Now;
-            Dictionary<string, Quest> quests = logic.Memory.Quests();
-            foreach (KeyValuePair<string, Quest> pair in quests) {
+            foreach (KeyValuePair<string, T> pair in newItems) {
                 string key = pair.Key;
-                Quest state = pair.Value;
+                T state = pair.Value;
 
-                Quest oldState;
-                if (currentQuests.TryGetValue(key, out oldState)) {
-                    bool value = state.Completed;
-                    bool oldValue = oldState.Completed;
-                    if (value != oldValue) {
-                        AddEntryUnlocked(new ValueLogEntry(date, LogObject.Quests, oldState, state));
-                        currentQuests[key] = state;
-                    }
-                } else {
-                    currentQuests[key] = state;
-                }
-            }
-        }
-        private void CheckChests(LogicManager logic) {
-            DateTime date = DateTime.Now;
-            Dictionary<string, Chest> chests = logic.Memory.Chests();
-            foreach (KeyValuePair<string, Chest> pair in chests) {
-                string key = pair.Key;
-                Chest state = pair.Value;
-
-                Chest oldState = null;
-                if (!currentChests.TryGetValue(key, out oldState)) {
-                    AddEntryUnlocked(new ValueLogEntry(date, LogObject.Chests, oldState, state));
-                    currentChests[key] = state;
+                T oldState;
+                if (!currentItems.TryGetValue(key, out oldState)) {
+                    AddEntryUnlocked(new ValueLogEntry(date, type, oldState, state));
+                    currentItems[key] = state;
                 }
             }
             List<string> itemsToRemove = new List<string>();
-            foreach (KeyValuePair<string, Chest> pair in currentChests) {
+            foreach (KeyValuePair<string, T> pair in currentItems) {
                 string key = pair.Key;
-                Chest state = pair.Value;
+                T state = pair.Value;
 
-                if (!chests.ContainsKey(key)) {
-                    AddEntryUnlocked(new ValueLogEntry(date, LogObject.Chests, state, null));
+                if (!newItems.ContainsKey(key)) {
+                    AddEntryUnlocked(new ValueLogEntry(date, type, state, null));
                     itemsToRemove.Add(key);
                 }
             }
             for (int i = 0; i < itemsToRemove.Count; i++) {
-                currentChests.Remove(itemsToRemove[i]);
-            }
-        }
-        private void CheckSpells(LogicManager logic) {
-            DateTime date = DateTime.Now;
-            Dictionary<string, Spell> spells = logic.Memory.Spells();
-            foreach (KeyValuePair<string, Spell> pair in spells) {
-                string key = pair.Key;
-                Spell state = pair.Value;
-
-                Spell oldState = null;
-                if (!currentSpells.TryGetValue(key, out oldState) || oldState.Level != state.Level) {
-                    AddEntryUnlocked(new ValueLogEntry(date, LogObject.Spells, oldState, state));
-                    currentSpells[key] = state;
-                }
-            }
-            List<string> itemsToRemove = new List<string>();
-            foreach (KeyValuePair<string, Spell> pair in currentSpells) {
-                string key = pair.Key;
-                Spell state = pair.Value;
-
-                if (!spells.ContainsKey(key)) {
-                    AddEntryUnlocked(new ValueLogEntry(date, LogObject.Spells, state, null));
-                    itemsToRemove.Add(key);
-                }
-            }
-            for (int i = 0; i < itemsToRemove.Count; i++) {
-                currentSpells.Remove(itemsToRemove[i]);
+                currentItems.Remove(itemsToRemove[i]);
             }
         }
         private string GetCurrentSplit(LogicManager logic, SplitterSettings settings) {

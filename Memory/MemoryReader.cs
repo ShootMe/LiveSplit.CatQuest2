@@ -18,6 +18,7 @@ namespace LiveSplit.CatQuest2 {
 
             unsafe {
                 int size = sizeof(T);
+                if (typeof(T) == typeof(IntPtr)) { size = is64Bit ? 8 : 4; }
                 byte[] buffer = Read(targetProcess, address + last, size);
                 fixed (byte* ptr = buffer) {
                     return *(T*)ptr;

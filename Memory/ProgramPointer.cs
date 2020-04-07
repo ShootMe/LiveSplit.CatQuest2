@@ -74,17 +74,10 @@ namespace LiveSplit.CatQuest2 {
         public static IntPtr DerefPointer(Process program, IntPtr pointer, AutoDeref autoDeref) {
             if (pointer != IntPtr.Zero) {
                 if (autoDeref != AutoDeref.None) {
-                    if (MemoryReader.is64Bit) {
-                        pointer = (IntPtr)program.Read<ulong>(pointer);
-                    } else {
-                        pointer = (IntPtr)program.Read<uint>(pointer);
-                    }
+                    pointer = program.Read<IntPtr>(pointer);
+                    
                     if (autoDeref == AutoDeref.Double) {
-                        if (MemoryReader.is64Bit) {
-                            pointer = (IntPtr)program.Read<ulong>(pointer);
-                        } else {
-                            pointer = (IntPtr)program.Read<uint>(pointer);
-                        }
+                        pointer = program.Read<IntPtr>(pointer);
                     }
                 }
             }
@@ -158,7 +151,7 @@ namespace LiveSplit.CatQuest2 {
             } else {
                 Tuple<IntPtr, IntPtr> range = ProgramPointer.GetAddressRange(program, asmName);
                 Searcher.MemoryFilter = delegate (MemInfo info) {
-                    return (ulong)info.BaseAddress >= (ulong)range.Item1 && (ulong)info.BaseAddress <= (ulong)range.Item2 && (info.State & 0x1000) != 0 && (info.Protect & 0x40) != 0 && (info.Protect & 0x100) == 0;
+                    return (ulong)info.BaseAddress >= (ulong)range.Item1 && (ulong)info.BaseAddress <= (ulong)range.Item2 && (info.State & 0x1000) != 0 && (info.Protect & 0x20) != 0 && (info.Protect & 0x100) == 0;
                 };
             }
 
@@ -209,11 +202,7 @@ namespace LiveSplit.CatQuest2 {
                 }
             }
 
-            if (MemoryReader.is64Bit) {
-                return (IntPtr)program.Read<ulong>(BasePtr, Offsets);
-            } else {
-                return (IntPtr)program.Read<uint>(BasePtr, Offsets);
-            }
+            return program.Read<IntPtr>(BasePtr, Offsets);
         }
     }
 }

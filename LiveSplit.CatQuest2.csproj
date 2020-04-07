@@ -95,7 +95,8 @@
     <Compile Include="Logic\LogicManager.cs" />
     <Compile Include="Logic\SplitDungeon.cs" />
     <Compile Include="Logic\Utility.cs" />
-    <Compile Include="Memory\Chest.cs" />
+    <Compile Include="Memory\Equipment.cs" />
+    <Compile Include="Memory\GuidItem.cs" />
     <Compile Include="Memory\Contexts.cs" />
     <Compile Include="Memory\Quest.cs" />
     <Compile Include="Memory\RoyalArts.cs" />
