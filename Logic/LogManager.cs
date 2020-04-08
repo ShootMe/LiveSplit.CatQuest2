@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 namespace LiveSplit.CatQuest2 {
     public enum LogObject {
         None,
@@ -23,41 +24,54 @@ namespace LiveSplit.CatQuest2 {
         Equipment
     }
     public class LogManager {
-        public List<ILogEntry> LogEntries = new List<ILogEntry>();
+        public const string LOG_FILE = "CatQuest2.txt";
         private Dictionary<LogObject, string> currentValues = new Dictionary<LogObject, string>();
-        private Dictionary<string, Quest> currentQuests = new Dictionary<string, Quest>(StringComparer.OrdinalIgnoreCase);
         private Dictionary<string, GuidItem> currentChests = new Dictionary<string, GuidItem>(StringComparer.OrdinalIgnoreCase);
-        private Dictionary<string, Spell> currentSpells = new Dictionary<string, Spell>(StringComparer.OrdinalIgnoreCase);
-        private Dictionary<string, GuidItem> currentKeys = new Dictionary<string, GuidItem>(StringComparer.OrdinalIgnoreCase);
         private Dictionary<string, Equipment> currentEquipment = new Dictionary<string, Equipment>(StringComparer.OrdinalIgnoreCase);
+        private Dictionary<string, GuidItem> currentKeys = new Dictionary<string, GuidItem>(StringComparer.OrdinalIgnoreCase);
+        private Dictionary<string, Quest> currentQuests = new Dictionary<string, Quest>(StringComparer.OrdinalIgnoreCase);
+        private Dictionary<string, Spell> currentSpells = new Dictionary<string, Spell>(StringComparer.OrdinalIgnoreCase);
         public bool EnableLogging;
 
         public LogManager() {
             EnableLogging = false;
             Clear();
-            AddEntryUnlocked(new EventLogEntry("Autosplitter Initialized"));
+            AddEntryUnlocked(new EventLogEntry("Initialized"));
         }
-        public void Clear() {
-            lock (LogEntries) {
-                LogEntries.Clear();
+        public void Clear(bool deleteFile = false) {
+            lock (currentValues) {
+                if (deleteFile) {
+                    try {
+                        File.Delete(LOG_FILE);
+                    } catch { }
+                }
                 foreach (LogObject key in Enum.GetValues(typeof(LogObject))) {
                     currentValues[key] = null;
                 }
+                currentChests.Clear();
+                currentEquipment.Clear();
+                currentKeys.Clear();
+                currentQuests.Clear();
+                currentSpells.Clear();
             }
         }
         public void AddEntry(ILogEntry entry) {
-            lock (LogEntries) {
+            lock (currentValues) {
                 AddEntryUnlocked(entry);
             }
         }
         private void AddEntryUnlocked(ILogEntry entry) {
-            LogEntries.Add(entry);
+            if (EnableLogging) {
+                try {
+                    File.AppendAllText(LOG_FILE, $"{entry}\r\n");
+                } catch { }
+            }
             Console.WriteLine(entry.ToString());
         }
         public void Update(LogicManager logic, SplitterSettings settings) {
             if (!EnableLogging) { return; }
 
-            lock (LogEntries) {
+            lock (currentValues) {
                 DateTime date = DateTime.Now;
                 IntPtr savedGame = logic.Memory.SavedGame();
                 string scene = logic.Memory.SceneName();

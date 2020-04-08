@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
 using System.Xml;
@@ -123,16 +124,22 @@ namespace LiveSplit.CatQuest2 {
         private void btnLog_Click(object sender, EventArgs e) {
             DataTable dt = new DataTable();
             dt.Columns.Add("Event", typeof(string));
-            for (int i = 0; i < Log.LogEntries.Count; i++) {
-                ILogEntry logEntry = Log.LogEntries[i];
-                dt.Rows.Add(logEntry.ToString());
-            }
-            using (LogViewer logViewer = new LogViewer() { DataSource = dt }) {
-                logViewer.ShowDialog(this);
+            try {
+                StringReader sr = new StringReader(File.ReadAllText(LogManager.LOG_FILE));
+                string line;
+                while (!string.IsNullOrEmpty((line = sr.ReadLine()))) {
+                    dt.Rows.Add(line);
+                }
+
+                using (LogViewer logViewer = new LogViewer() { DataSource = dt }) {
+                    logViewer.ShowDialog(this);
+                }
+            } catch (Exception ex) {
+                MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void btnClearLog_Click(object sender, EventArgs e) {
-            Log.LogEntries.Clear();
+            Log.Clear(true);
             MessageBox.Show(this, "Debug Log has been cleared.", "Debug Log", MessageBoxButtons.OK, MessageBoxIcon.None);
         }
         private void flowMain_DragEnter(object sender, DragEventArgs e) {
