@@ -193,7 +193,7 @@ namespace LiveSplit.CatQuest2 {
             switch (dungeon) {
                 case SplitDungeon.BraveCave: sceneToCheck = "Cave_bravecave"; break;
                 case SplitDungeon.CaveGrotto: sceneToCheck = "Cave_cavegrotto"; break;
-                case SplitDungeon.FursakenCave: sceneToCheck = "Cave_cavegrotto"; break;
+                case SplitDungeon.FursakenCave: sceneToCheck = "Cave_fursakencave"; break;
                 case SplitDungeon.SeasideCove: sceneToCheck = "Cave_seasidecove"; break;
             }
 

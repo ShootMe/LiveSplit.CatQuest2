@@ -60,6 +60,8 @@ namespace LiveSplit.CatQuest2 {
             lock (LogEntries) {
                 DateTime date = DateTime.Now;
                 IntPtr savedGame = logic.Memory.SavedGame();
+                string scene = logic.Memory.SceneName();
+                bool updateLog = scene != "TitleScene" && savedGame != IntPtr.Zero;
 
                 foreach (LogObject key in Enum.GetValues(typeof(LogObject))) {
                     string previous = currentValues[key];
@@ -70,20 +72,20 @@ namespace LiveSplit.CatQuest2 {
                         case LogObject.Pointers: current = logic.Memory.GamePointers(); break;
                         case LogObject.Version: current = MemoryManager.Version.ToString(); break;
                         case LogObject.Loading: current = logic.Memory.IsLoading().ToString(); break;
-                        case LogObject.Quests: if (savedGame != IntPtr.Zero) { CheckItems<Quest>(key, currentQuests, logic.Memory.Quests()); } break;
-                        case LogObject.Chests: if (savedGame != IntPtr.Zero) { CheckItems<GuidItem>(key, currentChests, logic.Memory.Chests()); } break;
-                        case LogObject.Spells: if (savedGame != IntPtr.Zero) { CheckItems<Spell>(key, currentSpells, logic.Memory.Spells()); } break;
-                        case LogObject.Keys: if (savedGame != IntPtr.Zero) { CheckItems<GuidItem>(key, currentKeys, logic.Memory.Keys()); } break;
-                        case LogObject.Equipment: if (savedGame != IntPtr.Zero) { CheckItems<Equipment>(key, currentEquipment, logic.Memory.Equipment()); } break;
-                        case LogObject.Gold: current = logic.Memory.Gold().ToString(); break;
-                        case LogObject.Level: current = logic.Memory.Level().ToString(); break;
-                        case LogObject.Experience: current = logic.Memory.Experience().ToString(); break;
-                        case LogObject.Dungeons: current = logic.Memory.DungeonsCleared().ToString(); break;
-                        case LogObject.RoyalArts: current = logic.Memory.PlayerRoyalArts().ToString(); break;
-                        case LogObject.Scene: current = logic.Memory.SceneName(); break;
-                        case LogObject.FinalQuest: current = logic.Memory.FinalQuestCompleted().ToString(); break;
+                        case LogObject.Scene: current = scene; break;
+                        case LogObject.SavedGame: current = savedGame.ToString("X"); break;
                         case LogObject.SceneType: current = logic.Memory.GameSceneType().ToString(); break;
-                        case LogObject.SavedGame: current = logic.Memory.SavedGame().ToString("X"); break;
+                        case LogObject.Quests: if (updateLog) { CheckItems<Quest>(key, currentQuests, logic.Memory.Quests()); } break;
+                        case LogObject.Chests: if (updateLog) { CheckItems<GuidItem>(key, currentChests, logic.Memory.Chests()); } break;
+                        case LogObject.Spells: if (updateLog) { CheckItems<Spell>(key, currentSpells, logic.Memory.Spells()); } break;
+                        case LogObject.Keys: if (updateLog) { CheckItems<GuidItem>(key, currentKeys, logic.Memory.Keys()); } break;
+                        case LogObject.Equipment: if (updateLog) { CheckItems<Equipment>(key, currentEquipment, logic.Memory.Equipment()); } break;
+                        case LogObject.Gold: current = updateLog ? logic.Memory.Gold().ToString() : previous; break;
+                        case LogObject.Level: current = updateLog ? logic.Memory.Level().ToString() : previous; break;
+                        case LogObject.Experience: current = updateLog ? logic.Memory.Experience().ToString() : previous; break;
+                        case LogObject.Dungeons: current = updateLog ? logic.Memory.DungeonsCleared().ToString() : previous; break;
+                        case LogObject.RoyalArts: current = updateLog ? logic.Memory.PlayerRoyalArts().ToString() : previous; break;
+                        case LogObject.FinalQuest: current = updateLog ? logic.Memory.FinalQuestCompleted().ToString() : previous; break;
                     }
 
                     if (previous != current) {
