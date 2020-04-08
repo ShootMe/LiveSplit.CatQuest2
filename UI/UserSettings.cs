@@ -54,7 +54,7 @@ namespace LiveSplit.CatQuest2 {
         public void InitializeSettings(XmlNode node) {
             Settings.Autosplits.Clear();
 
-            bool logInfo = GetXmlBoolItem(node, ".//LogInfo", true);
+            bool logInfo = GetXmlBoolItem(node, ".//LogInfo", false);
             chkLog.Checked = logInfo;
             Log.EnableLogging = logInfo;
 

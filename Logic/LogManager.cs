@@ -31,12 +31,22 @@ namespace LiveSplit.CatQuest2 {
         private Dictionary<string, GuidItem> currentKeys = new Dictionary<string, GuidItem>(StringComparer.OrdinalIgnoreCase);
         private Dictionary<string, Quest> currentQuests = new Dictionary<string, Quest>(StringComparer.OrdinalIgnoreCase);
         private Dictionary<string, Spell> currentSpells = new Dictionary<string, Spell>(StringComparer.OrdinalIgnoreCase);
-        public bool EnableLogging;
+        private bool enableLogging;
+        public bool EnableLogging {
+            get { return enableLogging; }
+            set {
+                if (value != enableLogging) {
+                    enableLogging = value;
+                    if (value) {
+                        AddEntryUnlocked(new EventLogEntry("Initialized"));
+                    }
+                }
+            }
+        }
 
         public LogManager() {
             EnableLogging = false;
             Clear();
-            AddEntryUnlocked(new EventLogEntry("Initialized"));
         }
         public void Clear(bool deleteFile = false) {
             lock (currentValues) {
@@ -61,12 +71,15 @@ namespace LiveSplit.CatQuest2 {
             }
         }
         private void AddEntryUnlocked(ILogEntry entry) {
+            string logEntry = entry.ToString();
             if (EnableLogging) {
                 try {
-                    File.AppendAllText(LOG_FILE, $"{entry}\r\n");
+                    using (StreamWriter sw = new StreamWriter(LOG_FILE, true)) {
+                        sw.WriteLine(logEntry);
+                    }
                 } catch { }
+                Console.WriteLine(logEntry);
             }
-            Console.WriteLine(entry.ToString());
         }
         public void Update(LogicManager logic, SplitterSettings settings) {
             if (!EnableLogging) { return; }
