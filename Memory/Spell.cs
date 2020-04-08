@@ -64,6 +64,12 @@ namespace LiveSplit.CatQuest2 {
         public int ManaCost;
         public ElementalType ElementalType;
 
+        public override bool Equals(object obj) {
+            return obj is Spell spell && spell.Guid == Guid && spell.Level == Level;
+        }
+        public override int GetHashCode() {
+            return Guid.GetHashCode();
+        }
         public override string ToString() {
             return $"{Name} (Level={Level})(Mana={ManaCost})(Type={ElementalType})(Guid={Guid})";
         }

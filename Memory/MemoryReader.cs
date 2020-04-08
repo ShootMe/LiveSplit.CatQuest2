@@ -261,7 +261,7 @@ namespace LiveSplit.CatQuest2 {
         [DllImport("kernel32.dll", SetLastError = true)]
         private static extern int VirtualQueryEx(IntPtr hProcess, IntPtr lpAddress, out MemInfo lpBuffer, int dwLength);
 
-        private List<MemInfo> memoryInfo;
+        private List<MemInfo> memoryInfo = new List<MemInfo>();
         public Func<MemInfo, bool> MemoryFilter = delegate (MemInfo info) {
             return (info.State & 0x1000) != 0 && (info.Protect & 0x100) == 0;
         };
@@ -311,7 +311,6 @@ namespace LiveSplit.CatQuest2 {
             bool[] mask;
             GetSignature(signature, out pattern, out mask);
             int[] offsets = GetCharacterOffsets(pattern, mask);
-            memoryInfo = null;
 
             MemInfo memInfoStart = default(MemInfo);
             MemInfo memInfoEnd = default(MemInfo);
@@ -326,9 +325,7 @@ namespace LiveSplit.CatQuest2 {
             return ScanMemory(buff, pattern, mask, offsets) == 0;
         }
         public void GetMemoryInfo(IntPtr pHandle) {
-            if (memoryInfo != null) { return; }
-
-            memoryInfo = new List<MemInfo>();
+            memoryInfo.Clear();
             IntPtr current = (IntPtr)65536;
             while (true) {
                 MemInfo memInfo = new MemInfo();

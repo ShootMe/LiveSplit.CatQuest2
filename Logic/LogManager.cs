@@ -100,7 +100,7 @@ namespace LiveSplit.CatQuest2 {
                 T state = pair.Value;
 
                 T oldState;
-                if (!currentItems.TryGetValue(key, out oldState)) {
+                if (!currentItems.TryGetValue(key, out oldState) || !state.Equals(oldState)) {
                     AddEntryUnlocked(new ValueLogEntry(date, type, oldState, state));
                     currentItems[key] = state;
                 }

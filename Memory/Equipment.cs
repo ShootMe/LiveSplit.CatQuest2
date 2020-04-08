@@ -67,8 +67,14 @@ namespace LiveSplit.CatQuest2 {
         public ElementalType ElementalType;
         public float AttackRange;
 
+        public override bool Equals(object obj) {
+            return obj is Equipment equipment && equipment.Guid == Guid && equipment.Level == Level;
+        }
+        public override int GetHashCode() {
+            return Guid.GetHashCode();
+        }
         public override string ToString() {
-            return $"{SetName}-{ItemName} (Guid={Guid})(Level={Level})(Part={PartType})(Weapon={WeaponType})(Passive={PassiveType})(Element={ElementalType})(Range={AttackRange})";
+            return $"{SetName}({ItemName}) (Guid={Guid})(Level={Level})(Part={PartType})(Weapon={WeaponType})(Passive={PassiveType})(Element={ElementalType})(Range={AttackRange})";
         }
     }
     public enum EquipmentPartType {

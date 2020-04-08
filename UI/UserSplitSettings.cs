@@ -30,9 +30,26 @@ namespace LiveSplit.CatQuest2 {
                         cboValue.DataSource = Utility.GetEnumList<SplitArea>();
                         cboValue.SelectedValue = Utility.GetEnumValue<SplitArea>(UserSplit.Value);
                         break;
+                    case SplitType.Chest:
+                        cboValue.DataSource = Utility.GetEnumList<SplitChest>();
+                        cboValue.SelectedValue = Utility.GetEnumValue<SplitChest>(UserSplit.Value);
+                        break;
                     case SplitType.DungeonComplete:
                         cboValue.DataSource = Utility.GetEnumList<SplitDungeon>();
                         cboValue.SelectedValue = Utility.GetEnumValue<SplitDungeon>(UserSplit.Value);
+                        break;
+                    case SplitType.QuestStart:
+                    case SplitType.QuestComplete:
+                        cboValue.DataSource = Utility.GetEnumList<SplitQuest>();
+                        cboValue.SelectedValue = Utility.GetEnumValue<SplitQuest>(UserSplit.Value);
+                        break;
+                    case SplitType.RoyalArt:
+                        cboValue.DataSource = Utility.GetEnumList<SplitRoyalArt>();
+                        cboValue.SelectedValue = Utility.GetEnumValue<SplitRoyalArt>(UserSplit.Value);
+                        break;
+                    case SplitType.Spell:
+                        cboValue.DataSource = Utility.GetEnumList<SplitSpell>();
+                        cboValue.SelectedValue = Utility.GetEnumValue<SplitSpell>(UserSplit.Value);
                         break;
                     default:
                         txtValue.Text = UserSplit.Value;
@@ -60,8 +77,13 @@ namespace LiveSplit.CatQuest2 {
                 if (nextControlType != UserSplit.Type) {
                     switch (nextControlType) {
                         case SplitType.AreaEnter:
-                        case SplitType.AreaExit: DefaultValue = SplitArea.BraveCave; break;
+                        case SplitType.AreaExit: DefaultValue = SplitArea.Overworld; break;
+                        case SplitType.Chest: DefaultValue = SplitChest.BraveCave1; break;
                         case SplitType.DungeonComplete: DefaultValue = SplitDungeon.BraveCave; break;
+                        case SplitType.QuestStart:
+                        case SplitType.QuestComplete: DefaultValue = SplitQuest.Tutorial; break;
+                        case SplitType.RoyalArt: DefaultValue = SplitRoyalArt.RollAttack; break;
+                        case SplitType.Spell: DefaultValue = SplitSpell.Flamepurr; break;
                     }
                     UserSplit.Value = DefaultValue.ToString();
                 }

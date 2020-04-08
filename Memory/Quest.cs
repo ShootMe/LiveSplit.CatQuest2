@@ -33,17 +33,22 @@ namespace LiveSplit.CatQuest2 {
     public class Quest {
         public string Guid;
         public string Name;
+        public bool Completed;
+        public bool Started;
         public bool MainQuest;
         public bool SideQuest;
         public int Level;
         public int Gold;
         public int Exp;
 
-        public Quest Clone() {
-            return new Quest() { Guid = Guid, Exp = Exp, Gold = Gold, Level = Level, MainQuest = MainQuest, SideQuest = SideQuest, Name = Name };
+        public override bool Equals(object obj) {
+            return obj is Quest quest && quest.Guid == Guid && quest.Completed == Completed && quest.Started == Started;
+        }
+        public override int GetHashCode() {
+            return Guid.GetHashCode();
         }
         public override string ToString() {
-            return $"{Name} (Guid={Guid})(Main={MainQuest})(Gold={Gold})(Exp={Exp})";
+            return $"{Name} (Guid={Guid})(Complete={Completed})(Started={Started})(Main={MainQuest})(Gold={Gold})(Exp={Exp})";
         }
     }
 }
