@@ -48,13 +48,13 @@ namespace LiveSplit.CatQuest2 {
             StartAutosplitter();
         }
 
-        public void WaitOne() {
+        public void WaitForLogic() {
             lock (logic) {
                 while (!shouldLog && isRunning) { Monitor.Wait(logic); }
                 shouldLog = false;
             }
         }
-        public void Pulse() {
+        public void PulseLog() {
             lock (logic) {
                 shouldLog = true;
                 Monitor.PulseAll(logic);
@@ -70,7 +70,7 @@ namespace LiveSplit.CatQuest2 {
                         try {
                             if (logic.IsHooked()) {
                                 logic.Update();
-                                Pulse();
+                                PulseLog();
                             }
                             HandleLogic();
                         } catch (Exception ex) {
@@ -85,7 +85,7 @@ namespace LiveSplit.CatQuest2 {
                 try {
                     while (isRunning) {
                         try {
-                            WaitOne();
+                            WaitForLogic();
                             log.Update(logic, userSettings.Settings);
                         } catch (Exception ex) {
                             log.AddEntry(new EventLogEntry(ex.ToString()));
@@ -170,7 +170,7 @@ namespace LiveSplit.CatQuest2 {
         public float VerticalHeight { get { return 0; } }
         public void Dispose() {
             isRunning = false;
-            Pulse();
+            PulseLog();
             if (Model != null) {
                 Model.CurrentState.OnReset -= OnReset;
                 Model.CurrentState.OnPause -= OnPause;

@@ -87,14 +87,46 @@ namespace LiveSplit.CatQuest2 {
             CacheItem<IntPtr> cache = GetCache(Context.GameState, (int)GameStateContext.SavedGame);
             return GroupSingleComponent(cache.Item, (int)GameStateContext.SavedGame);
         }
+        public int DungeonsCleared() {
+            IntPtr savedGame = SavedGame();
+            return Program.Read<int>(savedGame, 0x8, 0xc0);
+        }
+        public bool FinalQuestCompleted() {
+            IntPtr savedGame = SavedGame();
+            return Program.Read<bool>(savedGame, 0x8, 0xc8);
+        }
+        public RoyalArts PlayerRoyalArts() {
+            CacheItem<IntPtr> cache = GetCache(Context.GameState, (int)GameStateContext.RoyalArts);
+            IntPtr entity = GroupSingleComponent(cache.Item, (int)GameStateContext.RoyalArts);
+            if (entity == IntPtr.Zero) {
+                return 0;
+            }
+            return Program.Read<RoyalArts>(entity, 0x8);
+        }
+        public bool HasKey(string guid) {
+            IntPtr savedGame = SavedGame();
+            IntPtr keys = Program.Read<IntPtr>(savedGame, 0x8, 0x78);
+
+            int count = Program.Read<int>(keys, 0xc);
+            keys = Program.Read<IntPtr>(keys, 0x8);
+            byte[] data = Program.Read(keys + 0x10, count * 0x4);
+            for (int i = 0; i < count; i++) {
+                string id = Program.ReadString((IntPtr)BitConverter.ToUInt32(data, i * 0x4), 0xc, 0x0);
+                if (id == guid) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
         public Dictionary<string, GuidItem> Keys() {
             IntPtr savedGame = SavedGame();
-            IntPtr chests = Program.Read<IntPtr>(savedGame, 0x8, 0x78);
+            IntPtr keys = Program.Read<IntPtr>(savedGame, 0x8, 0x78);
             currentKeys.Clear();
 
-            int count = Program.Read<int>(chests, 0xc);
-            chests = Program.Read<IntPtr>(chests, 0x8);
-            byte[] data = Program.Read(chests + 0x10, count * 0x4);
+            int count = Program.Read<int>(keys, 0xc);
+            keys = Program.Read<IntPtr>(keys, 0x8);
+            byte[] data = Program.Read(keys + 0x10, count * 0x4);
             for (int i = 0; i < count; i++) {
                 string guid = Program.ReadString((IntPtr)BitConverter.ToUInt32(data, i * 0x4), 0xc, 0x0);
                 currentKeys.Add(guid, new GuidItem() { Guid = guid });
@@ -151,7 +183,7 @@ namespace LiveSplit.CatQuest2 {
 
             return currentEquipment;
         }
-        public Spell Spell(string name) {
+        public bool HasSpell(string name) {
             CacheItem<IntPtr> cache = GetCache(Context.GameState, (int)GameStateContext.SpellsAttainedList);
             IntPtr spells = GroupSingleComponent(cache.Item, (int)GameStateContext.SpellsAttainedList);
 
@@ -160,15 +192,14 @@ namespace LiveSplit.CatQuest2 {
             byte[] data = Program.Read(spells + 0x10, count * 0x4);
             for (int i = 0; i < count; i++) {
                 IntPtr entity = (IntPtr)BitConverter.ToUInt32(data, i * 0x4);
-                int level = Program.Read<int>(entity, 0xc);
-                Spell spell = Program.Read<SpellData>(entity, 0x8, 0xc).Create(Program);
-                spell.Level = level;
-                if (spell.Name.Equals(name, StringComparison.OrdinalIgnoreCase)) {
-                    return spell;
+                string item = Program.ReadString(entity, 0x8, 0x10, 0x0);
+
+                if (name.Equals(item, StringComparison.OrdinalIgnoreCase)) {
+                    return true;
                 }
             }
 
-            return null;
+            return false;
         }
         public Dictionary<string, Spell> Spells() {
             CacheItem<IntPtr> cache = GetCache(Context.GameState, (int)GameStateContext.SpellsAttainedList);
@@ -188,22 +219,6 @@ namespace LiveSplit.CatQuest2 {
             }
 
             return currentSpells;
-        }
-        public int DungeonsCleared() {
-            IntPtr savedGame = SavedGame();
-            return Program.Read<int>(savedGame, 0x8, 0xc0);
-        }
-        public bool FinalQuestCompleted() {
-            IntPtr savedGame = SavedGame();
-            return Program.Read<bool>(savedGame, 0x8, 0xc8);
-        }
-        public RoyalArts PlayerRoyalArts() {
-            CacheItem<IntPtr> cache = GetCache(Context.GameState, (int)GameStateContext.RoyalArts);
-            IntPtr entity = GroupSingleComponent(cache.Item, (int)GameStateContext.RoyalArts);
-            if (entity == IntPtr.Zero) {
-                return 0;
-            }
-            return Program.Read<RoyalArts>(entity, 0x8);
         }
         public Quest Quest(string guid) {
             List<IntPtr> entities = ContextEntities(Context.Quest);

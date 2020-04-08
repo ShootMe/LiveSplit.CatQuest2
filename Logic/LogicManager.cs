@@ -168,7 +168,7 @@ namespace LiveSplit.CatQuest2 {
         }
         private void CheckSpell(Split split) {
             SplitSpell spell = Utility.GetEnumValue<SplitSpell>(split.Value);
-            bool value = Memory.Spell(spell.ToString()) != null;
+            bool value = Memory.HasSpell(spell.ToString());
             ShouldSplit = value && !lastBoolValue;
             lastBoolValue = value;
         }
