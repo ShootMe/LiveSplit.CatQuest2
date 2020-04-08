@@ -141,10 +141,17 @@ namespace LiveSplit.CatQuest2 {
         private void CheckChest(Split split) {
             SplitChest chest = Utility.GetEnumValue<SplitChest>(split.Value);
             switch (chest) {
-                case SplitChest.BraveCave1: CheckChest("860602c55fdf54cfdb988308d5dc9245"); break;
-                case SplitChest.BraveCave2: CheckChest("3d327315bdc8f394ea178366681a2587"); break;
-                case SplitChest.BraveCave3: CheckChest("769af5d9fb8919e43b5399b840842d5a"); break;
-                case SplitChest.BraveCave4: CheckChest("0a039b88ce7979a42bf54d9730b02285"); break;
+                case SplitChest.BraveCaveNormal1: CheckChest("860602c55fdf54cfdb988308d5dc9245"); break;
+                case SplitChest.BraveCaveNormal2: CheckChest("3d327315bdc8f394ea178366681a2587"); break;
+                case SplitChest.BraveCaveWood1: CheckChest("769af5d9fb8919e43b5399b840842d5a"); break;
+                case SplitChest.BraveCaveWood2: CheckChest("0a039b88ce7979a42bf54d9730b02285"); break;
+                case SplitChest.FursakenCaveWood: CheckChest("9a2ad71b53496f547ad4af0635199cd4"); break;
+                case SplitChest.FursakenCaveNormal1: CheckChest("9645b61eca57207498d3863b11053104"); break;
+                case SplitChest.FursakenCaveNormal2: CheckChest("89a9b3dc80974c54095c87679b5bcd52"); break;
+                case SplitChest.FursakenCaveBoss: CheckChest(""); break;
+                case SplitChest.SeasideCoveNormal1: CheckChest("326206b46b413614dbc436f5e5f58606"); break;
+                case SplitChest.SeasideCoveNormal2: CheckChest("05e27c72b5d7ded4eb6123728f595f63"); break;
+                case SplitChest.SeasideCoveWood: CheckChest("befac82108769ce468a5b31018167604"); break;
             }
         }
         private void CheckChest(string guid) {
@@ -168,8 +175,8 @@ namespace LiveSplit.CatQuest2 {
         private void CheckQuest(Split split, bool complete) {
             SplitQuest quest = Utility.GetEnumValue<SplitQuest>(split.Value);
             switch (quest) {
-                case SplitQuest.Tutorial: CheckQuest(Memory.Quest("01dcb2d755fd9c345bfa2ac2cfd66788"), complete); break;
                 case SplitQuest.BlacksmithKit: CheckQuest(Memory.Quest("2033db891553b5044ba159b2c585ad5b"), complete); break;
+                case SplitQuest.Tutorial: CheckQuest(Memory.Quest("01dcb2d755fd9c345bfa2ac2cfd66788"), complete); break;
             }
         }
         private void CheckQuest(Quest quest, bool complete) {
@@ -185,8 +192,9 @@ namespace LiveSplit.CatQuest2 {
             string sceneToCheck = string.Empty;
             switch (dungeon) {
                 case SplitDungeon.BraveCave: sceneToCheck = "Cave_bravecave"; break;
-                case SplitDungeon.SeasideCove: sceneToCheck = "Cave_seasidecove"; break;
                 case SplitDungeon.CaveGrotto: sceneToCheck = "Cave_cavegrotto"; break;
+                case SplitDungeon.FursakenCave: sceneToCheck = "Cave_cavegrotto"; break;
+                case SplitDungeon.SeasideCove: sceneToCheck = "Cave_seasidecove"; break;
             }
 
             int dungeonsComplete = Memory.DungeonsCleared();
@@ -196,11 +204,13 @@ namespace LiveSplit.CatQuest2 {
         private void CheckArea(Split split, bool enter) {
             SplitArea area = Utility.GetEnumValue<SplitArea>(split.Value);
             switch (area) {
-                case SplitArea.Overworld: CheckScene(enter, "MainOverworld"); break;
                 case SplitArea.BraveCave: CheckScene(enter, "Cave_bravecave"); break;
-                case SplitArea.KitCat: CheckScene(enter, "Interior_KitCat"); break;
-                case SplitArea.SeasideCove: CheckScene(enter, "Cave_seasidecove"); break;
                 case SplitArea.CaveGrotto: CheckScene(enter, "Cave_cavegrotto"); break;
+                case SplitArea.FursakenCave: CheckScene(enter, "Cave_fursakencave"); break;
+                case SplitArea.Kingsmarker: CheckScene(enter, "Ruins_Kingsmarker"); break;
+                case SplitArea.KitCat: CheckScene(enter, "Interior_KitCat"); break;
+                case SplitArea.Overworld: CheckScene(enter, "MainOverworld"); break;
+                case SplitArea.SeasideCove: CheckScene(enter, "Cave_seasidecove"); break;
             }
         }
         private void CheckScene(bool enter, string sceneToCheck) {
