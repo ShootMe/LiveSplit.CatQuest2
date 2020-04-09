@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 namespace LiveSplit.CatQuest2 {
     public class LogicManager {
         public bool ShouldSplit { get; private set; }
@@ -57,7 +58,7 @@ namespace LiveSplit.CatQuest2 {
         }
         public void Update() {
             if (CurrentSplit < Settings.Autosplits.Count) {
-                CheckSplit(Settings.Autosplits[CurrentSplit], false);
+                CheckSplit(Settings.Autosplits[CurrentSplit], !Running);
                 if (!Running) {
                     Paused = true;
                     if (ShouldSplit) {
@@ -73,56 +74,63 @@ namespace LiveSplit.CatQuest2 {
         private void CheckSplit(Split split, bool updateValues) {
             ShouldSplit = false;
             Paused = Memory.IsLoading();
+            int savedGame = (int)Memory.SavedGame();
+            bool hasSavedGame = savedGame != 0;
 
-            if (split.Type == SplitType.GameStart) {
-                string scene = Memory.SceneName();
-                int savedGame = (int)Memory.SavedGame();
-                ShouldSplit = scene == "TitleScene" && savedGame != 0 && lastIntValue == 0;
-                lastIntValue = savedGame;
-            } else {
-                if (!updateValues && Paused) {
-                    return;
-                }
-
-                switch (split.Type) {
-                    case SplitType.ManualSplit:
-                        break;
-                    case SplitType.AreaEnter:
-                        CheckArea(split, true);
-                        break;
-                    case SplitType.AreaExit:
-                        CheckArea(split, false);
-                        break;
-                    case SplitType.Chest:
-                        CheckChest(split);
-                        break;
-                    case SplitType.DungeonComplete:
-                        CheckDungeon(split);
-                        break;
-                    case SplitType.Level:
-                        CheckLevel(split);
-                        break;
-                    case SplitType.QuestStart:
-                        CheckQuest(split, false);
-                        break;
-                    case SplitType.QuestComplete:
-                        CheckQuest(split, true);
-                        break;
-                    case SplitType.RoyalArt:
-                        CheckRoyalArt(split);
-                        break;
-                    case SplitType.Spell:
-                        CheckSpell(split);
-                        break;
-                }
-
-                if (Paused) {
-                    ShouldSplit = false;
-                } else if (DateTime.Now > splitLate) {
-                    ShouldSplit = true;
-                    splitLate = DateTime.MaxValue;
-                }
+            if (!updateValues && !hasSavedGame) {
+                return;
             }
+
+            switch (split.Type) {
+                case SplitType.ManualSplit:
+                    break;
+                case SplitType.GameStart:
+                    CheckGameStart(savedGame);
+                    break;
+                case SplitType.AreaEnter:
+                    CheckArea(split, true);
+                    break;
+                case SplitType.AreaExit:
+                    CheckArea(split, false);
+                    break;
+                case SplitType.Chest:
+                    CheckChest(split);
+                    break;
+                case SplitType.DungeonComplete:
+                    CheckDungeon(split);
+                    break;
+                case SplitType.Level:
+                    CheckLevel(split);
+                    break;
+                case SplitType.QuestStart:
+                    CheckQuest(split, false);
+                    break;
+                case SplitType.QuestComplete:
+                    CheckQuest(split, true);
+                    break;
+                case SplitType.RoyalArt:
+                    CheckRoyalArt(split);
+                    break;
+                case SplitType.Spell:
+                    CheckSpell(split);
+                    break;
+            }
+
+            if (!hasSavedGame && Running) {
+                ShouldSplit = false;
+            } else if (DateTime.Now > splitLate) {
+                ShouldSplit = true;
+                splitLate = DateTime.MaxValue;
+            }
+        }
+        private void CheckGameStart(int savedGame) {
+            string scene = Memory.SceneName();
+            ShouldSplit = scene == "TitleScene" && savedGame != 0 && lastIntValue == 0;
+            if (ShouldSplit) {
+                Thread.Sleep(5);
+                ShouldSplit = Memory.TotalPlayTime().Ticks == 0;
+            }
+            lastIntValue = savedGame;
         }
         private void CheckRoyalArt(Split split) {
             SplitRoyalArt royalArt = Utility.GetEnumValue<SplitRoyalArt>(split.Value);

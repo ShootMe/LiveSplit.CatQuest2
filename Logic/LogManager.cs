@@ -21,7 +21,8 @@ namespace LiveSplit.CatQuest2 {
         Spells,
         Keys,
         FinalQuest,
-        Equipment
+        Equipment,
+        TotalTime
     }
     public class LogManager {
         public const string LOG_FILE = "CatQuest2.txt";
@@ -87,8 +88,7 @@ namespace LiveSplit.CatQuest2 {
             lock (currentValues) {
                 DateTime date = DateTime.Now;
                 IntPtr savedGame = logic.Memory.SavedGame();
-                string scene = logic.Memory.SceneName();
-                bool updateLog = scene != "TitleScene" && savedGame != IntPtr.Zero;
+                bool updateLog = savedGame != IntPtr.Zero;
 
                 foreach (LogObject key in Enum.GetValues(typeof(LogObject))) {
                     string previous = currentValues[key];
@@ -99,8 +99,9 @@ namespace LiveSplit.CatQuest2 {
                         case LogObject.Pointers: current = logic.Memory.GamePointers(); break;
                         case LogObject.Version: current = MemoryManager.Version.ToString(); break;
                         case LogObject.Loading: current = logic.Memory.IsLoading().ToString(); break;
-                        case LogObject.Scene: current = scene; break;
+                        case LogObject.Scene: current = logic.Memory.SceneName(); break;
                         case LogObject.SavedGame: current = savedGame.ToString("X"); break;
+                        case LogObject.TotalTime: current = updateLog ? logic.Memory.TotalPlayTime().ToString() : previous; break;
                         case LogObject.SceneType: current = logic.Memory.GameSceneType().ToString(); break;
                         case LogObject.Quests: if (updateLog) { CheckItems<Quest>(key, currentQuests, logic.Memory.Quests()); } break;
                         case LogObject.Chests: if (updateLog) { CheckItems<GuidItem>(key, currentChests, logic.Memory.Chests()); } break;

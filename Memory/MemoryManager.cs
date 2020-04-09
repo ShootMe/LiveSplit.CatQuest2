@@ -91,6 +91,10 @@ namespace LiveSplit.CatQuest2 {
             IntPtr savedGame = SavedGame();
             return Program.Read<int>(savedGame, 0x8, 0xc0);
         }
+        public TimeSpan TotalPlayTime() {
+            IntPtr savedGame = SavedGame();
+            return Program.Read<TimeSpan>(savedGame, 0x8, 0x28);
+        }
         public bool FinalQuestCompleted() {
             IntPtr savedGame = SavedGame();
             return Program.Read<bool>(savedGame, 0x8, 0xc8);
