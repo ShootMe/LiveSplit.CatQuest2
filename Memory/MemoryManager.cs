@@ -220,7 +220,7 @@ namespace LiveSplit.CatQuest2 {
             byte[] data = Program.Read(spells + 0x10, count * 0x4);
             for (int i = 0; i < count; i++) {
                 IntPtr entity = (IntPtr)BitConverter.ToUInt32(data, i * 0x4);
-                int level = Program.Read<int>(entity, 0xc);
+                int level = Program.Read<int>(entity, 0x10);
                 Spell spell = Program.Read<SpellData>(entity, 0x8, 0xc).Create(Program);
                 spell.Level = level;
                 currentSpells.Add(spell.Guid, spell);
