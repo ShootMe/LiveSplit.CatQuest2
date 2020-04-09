@@ -1,6 +1,8 @@
 ﻿using System.ComponentModel;
 namespace LiveSplit.CatQuest2 {
     public enum SplitArea {
+        [Description("Arcane Headpawters")]
+        ArcaneHeadpawters,
         [Description("Bay Cave")]
         BayCave,
         [Description("Blue Cave")]
@@ -25,14 +27,16 @@ namespace LiveSplit.CatQuest2 {
         FurriblePurrison,
         [Description("Fursaken Cave")]
         FursakenCave,
+        [Description("Hidden Cave")]
+        HiddenCave,
         [Description("King Duos Ruins")]
         KingDuosRuins,
         [Description("King Lionardo Ruins")]
         KingLionardoRuins,
+        [Description("King Sigil Ruins")]
+        KingSigilRuins,
         [Description("Kingsmarker")]
         Kingsmarker,
-        [Description("Kings Sigil Ruins")]
-        KingsSigilRuins,
         [Description("Kit Cat")]
         KitCat,
         [Description("Kit's Trial")]

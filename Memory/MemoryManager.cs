@@ -192,7 +192,7 @@ namespace LiveSplit.CatQuest2 {
 
             return currentEquipment;
         }
-        public bool HasSpell(string name) {
+        public bool HasSpell(string guid) {
             IntPtr cache = GetCache(Context.GameState, (int)GameStateContext.SpellsAttainedList);
             IntPtr spells = GroupSingleComponent(cache, (int)GameStateContext.SpellsAttainedList);
 
@@ -201,9 +201,9 @@ namespace LiveSplit.CatQuest2 {
             byte[] data = Program.Read(spells + 0x10, count * 0x4);
             for (int i = 0; i < count; i++) {
                 IntPtr entity = (IntPtr)BitConverter.ToUInt32(data, i * 0x4);
-                string item = Program.ReadString(entity, 0x8, 0x10, 0x0);
+                string id = Program.ReadString(entity, 0x8, 0xc, 0x0);
 
-                if (name.Equals(item, StringComparison.OrdinalIgnoreCase)) {
+                if (guid.Equals(id, StringComparison.OrdinalIgnoreCase)) {
                     return true;
                 }
             }

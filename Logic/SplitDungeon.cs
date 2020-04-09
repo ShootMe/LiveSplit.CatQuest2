@@ -27,8 +27,8 @@ namespace LiveSplit.CatQuest2 {
         KingDuosRuins,
         [Description("King Lionardo Ruins")]
         KingLionardoRuins,
-        [Description("Kings Sigil Ruins")]
-        KingsSigilRuins,
+        [Description("King Sigil Ruins")]
+        KingSigilRuins,
         [Description("Mountain Cave")]
         MountainCave,
         [Description("Novem Ruins")]
