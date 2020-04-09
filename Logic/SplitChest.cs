@@ -15,8 +15,8 @@ namespace LiveSplit.CatQuest2 {
         FursakenCaveNormal1,
         [Description("Fursaken Cave (Normal 2)")]
         FursakenCaveNormal2,
-        [Description("Fursaken Cave (Boss)")]
-        FursakenCaveBoss,
+        [Description("Fursaken Cave (Purple)")]
+        FursakenCavePurple,
         [Description("Seaside Cove (Normal 1)")]
         SeasideCoveNormal1,
         [Description("Seaside Cove (Normal 2)")]

@@ -99,6 +99,9 @@ namespace LiveSplit.CatQuest2 {
                 case SplitType.DungeonComplete:
                     CheckDungeon(split);
                     break;
+                case SplitType.Key:
+                    CheckKey(split);
+                    break;
                 case SplitType.Level:
                     CheckLevel(split);
                     break;
@@ -156,7 +159,7 @@ namespace LiveSplit.CatQuest2 {
                 case SplitChest.FursakenCaveWood: CheckChest("9a2ad71b53496f547ad4af0635199cd4"); break;
                 case SplitChest.FursakenCaveNormal1: CheckChest("9645b61eca57207498d3863b11053104"); break;
                 case SplitChest.FursakenCaveNormal2: CheckChest("89a9b3dc80974c54095c87679b5bcd52"); break;
-                case SplitChest.FursakenCaveBoss: CheckChest(""); break;
+                case SplitChest.FursakenCavePurple: CheckChest(""); break;
                 case SplitChest.SeasideCoveNormal1: CheckChest("326206b46b413614dbc436f5e5f58606"); break;
                 case SplitChest.SeasideCoveNormal2: CheckChest("05e27c72b5d7ded4eb6123728f595f63"); break;
                 case SplitChest.SeasideCoveWood: CheckChest("befac82108769ce468a5b31018167604"); break;
@@ -180,14 +183,27 @@ namespace LiveSplit.CatQuest2 {
             ShouldSplit = value && !lastBoolValue;
             lastBoolValue = value;
         }
+        private void CheckKey(Split split) {
+            SplitKey quest = Utility.GetEnumValue<SplitKey>(split.Value);
+            switch (quest) {
+                case SplitKey.ArcaneHeadpawters: CheckKey("5a40932a9be236f46882840732c6ee25"); break;
+            }
+        }
+        private void CheckKey(string guid) {
+            bool value = Memory.HasKey(guid);
+            ShouldSplit = value && !lastBoolValue;
+            lastBoolValue = value;
+        }
         private void CheckQuest(Split split, bool complete) {
             SplitQuest quest = Utility.GetEnumValue<SplitQuest>(split.Value);
             switch (quest) {
-                case SplitQuest.BlacksmithKit: CheckQuest(Memory.Quest("2033db891553b5044ba159b2c585ad5b"), complete); break;
-                case SplitQuest.Tutorial: CheckQuest(Memory.Quest("01dcb2d755fd9c345bfa2ac2cfd66788"), complete); break;
+                case SplitQuest.BlacksmithKit: CheckQuest("2033db891553b5044ba159b2c585ad5b", complete); break;
+                case SplitQuest.ThePurrsecutor: CheckQuest("98e574a60ffec244ba7a416ca2ae2bf7", complete); break;
+                case SplitQuest.Tutorial: CheckQuest("01dcb2d755fd9c345bfa2ac2cfd66788", complete); break;
             }
         }
-        private void CheckQuest(Quest quest, bool complete) {
+        private void CheckQuest(string guid, bool complete) {
+            Quest quest = Memory.Quest(guid);
             bool value = false;
             if (quest != null) {
                 value = complete ? quest.Completed : quest.Started;

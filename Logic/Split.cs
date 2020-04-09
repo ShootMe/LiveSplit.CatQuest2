@@ -15,6 +15,8 @@ namespace LiveSplit.CatQuest2 {
         GameStart,
         [Description("Game End")]
         GameEnd,
+        [Description("Key")]
+        Key,
         [Description("Level")]
         Level,
         [Description("Quest (Start)")]

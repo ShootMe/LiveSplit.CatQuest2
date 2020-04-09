@@ -4,6 +4,8 @@ namespace LiveSplit.CatQuest2 {
         [Description("Tutorial")]
         Tutorial,
         [Description("Blacksmith Kit")]
-        BlacksmithKit
+        BlacksmithKit,
+        [Description("The Purrsecutor")]
+        ThePurrsecutor
     }
 }

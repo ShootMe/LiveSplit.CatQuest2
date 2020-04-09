@@ -38,6 +38,10 @@ namespace LiveSplit.CatQuest2 {
                         cboValue.DataSource = Utility.GetEnumList<SplitDungeon>();
                         cboValue.SelectedValue = Utility.GetEnumValue<SplitDungeon>(UserSplit.Value);
                         break;
+                    case SplitType.Key:
+                        cboValue.DataSource = Utility.GetEnumList<SplitKey>();
+                        cboValue.SelectedValue = Utility.GetEnumValue<SplitKey>(UserSplit.Value);
+                        break;
                     case SplitType.QuestStart:
                     case SplitType.QuestComplete:
                         cboValue.DataSource = Utility.GetEnumList<SplitQuest>();
@@ -80,6 +84,7 @@ namespace LiveSplit.CatQuest2 {
                         case SplitType.AreaExit: DefaultValue = SplitArea.Overworld; break;
                         case SplitType.Chest: DefaultValue = SplitChest.BraveCaveNormal1; break;
                         case SplitType.DungeonComplete: DefaultValue = SplitDungeon.BraveCave; break;
+                        case SplitType.Key: DefaultValue = SplitKey.ArcaneHeadpawters; break;
                         case SplitType.QuestStart:
                         case SplitType.QuestComplete: DefaultValue = SplitQuest.Tutorial; break;
                         case SplitType.RoyalArt: DefaultValue = SplitRoyalArt.RollAttack; break;
