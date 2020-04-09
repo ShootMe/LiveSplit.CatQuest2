@@ -161,6 +161,9 @@ namespace LiveSplit.CatQuest2 {
                 case SplitChest.CatpitalCaveLocked: CheckChest("65fd088605adf464bbd162b4ecafb62e"); break;
                 case SplitChest.CaveGrottoNormal1: CheckChest("2a386c8407b959c43b0f8ab180204cf8"); break;
                 case SplitChest.CaveGrottoNormal2: CheckChest("4146c61d22bf44f4383d31f4bf62e8f6"); break;
+                case SplitChest.CavePeasyWood: CheckChest("8ba097ecd47b8bc4b83a467c452505ed"); break;
+                case SplitChest.CavePeasyNormal: CheckChest("32a74d0cc576c0f44961b0416e6237d5"); break;
+                case SplitChest.CavePeasyLocked: CheckChest(""); break;
                 case SplitChest.DecemRuinsTrial: CheckChest("c0513ac7468734c4eba25eca1d33bac7"); break;
                 case SplitChest.FurrestCaveWood1: CheckChest("30f56ca35b31a6049af7ba04cfff6096"); break;
                 case SplitChest.FurrestCaveWood2: CheckChest("40775876df715834080cae00d1eccfc1"); break;
@@ -170,6 +173,8 @@ namespace LiveSplit.CatQuest2 {
                 case SplitChest.FursakenCaveNormal1: CheckChest("9645b61eca57207498d3863b11053104"); break;
                 case SplitChest.FursakenCaveNormal2: CheckChest("89a9b3dc80974c54095c87679b5bcd52"); break;
                 case SplitChest.FursakenCaveLocked: CheckChest(""); break;
+                case SplitChest.KingLionardoRuinsNormal1: CheckChest("b4df01a6c473bca4abc1ac55b035c097"); break;
+                case SplitChest.KingLionardoRuinsNormal2: CheckChest("8fdfd5e4034240845af98f4983ee2d69"); break;
                 case SplitChest.KingSigilRuinsNormal1: CheckChest("c63431d4f98d5644ea7b41ebe53f6969"); break;
                 case SplitChest.KingSigilRuinsNormal2: CheckChest("ec1200ce45611b54aaeed39661104ebf"); break;
                 case SplitChest.KitsTrialNormal1: CheckChest("dfe9c3f08ae45cb4dac761894e9df127"); break;
@@ -178,6 +183,9 @@ namespace LiveSplit.CatQuest2 {
                 case SplitChest.OctoRuinsTrial: CheckChest("9277eb480428d7348844065abebf916c"); break;
                 case SplitChest.PawsCaveNormal: CheckChest("d91c0e77f21ddc748a44f2b8f979e150"); break;
                 case SplitChest.PawsCaveLocked: CheckChest("7dd459dda4ffaae4f9bee921ab1c34ed"); break;
+                case SplitChest.PurrcludedCaveWood: CheckChest("7e36399f52661e742b33cf0cd24dffb6"); break;
+                case SplitChest.PurrcludedCaveNormal: CheckChest("5842ebc0f1d07344f819535af273dc27"); break;
+                case SplitChest.PurrcludedCaveLocked: CheckChest("dde373c035825d24a9f2823def041a2b"); break;
                 case SplitChest.PussCaveWood: CheckChest("283881cfffb372745a319ed840e30650"); break;
                 case SplitChest.PussCaveNormal: CheckChest("81a2b57ca1b34fd4a87837f50c27cd29"); break;
                 case SplitChest.PussCaveLocked: CheckChest("c32ccfce02d41924e9115d9fff8afa7b"); break;
@@ -222,6 +230,7 @@ namespace LiveSplit.CatQuest2 {
                 //DecemRuins 7f2e61a385842124d995c52b44fa667f
                 //FurrestCave c621211c245b8e248bf84bec25c5bdbf
                 //PawsCave 54da0da6a4589754c80370337f3b72e2
+                //PurrcludedCave 4ab4792868ce91e4694c957d1a3749bd
                 //PussCave 1a0e7969190456f4fa50a0f2b094b274
                 //NovemRuins cfc6c2c022c117c49bebd2ee23afa801
                 //OctoRuins 37fb6c998616c8843838f8f7eca83fc2
@@ -244,15 +253,98 @@ namespace LiveSplit.CatQuest2 {
         private void CheckQuest(Split split, bool complete) {
             SplitQuest quest = Utility.GetEnumValue<SplitQuest>(split.Value);
             switch (quest) {
+                case SplitQuest.AcceptThisNow: CheckQuest("12c427bffe7d851419791efb2992d926", complete); break;
+                case SplitQuest.AncientRealm: CheckQuest("f0235f2618b3e124a9f6017bab0be39a", complete); break;
                 case SplitQuest.ArcaneKitties: CheckQuest("4aa539578917a56448165bc3ca4940fe", complete); break;
+                case SplitQuest.ArtefactOfWaterWalking: CheckQuest("799f459d74406f844b58d0dcd640898e", complete); break;
+                case SplitQuest.BadConsequences: CheckQuest("226f85811e0301d41bad269f8638a577", complete); break;
+                case SplitQuest.BadDoggos: CheckQuest("177ee814e1258814c8f587e24290b7da", complete); break;
+                case SplitQuest.BadPropawganda: CheckQuest("f398a3e2d1d4a724fad3a8ea37fc83e7", complete); break;
                 case SplitQuest.BlacksmithKit: CheckQuest("2033db891553b5044ba159b2c585ad5b", complete); break;
+                case SplitQuest.BookOfWaterWalking: CheckQuest("311e5037a5177b84ba470353fb896738", complete); break;
+                case SplitQuest.CaseOfTheCodedNote: CheckQuest("595bcf670107dc040bbd1cd3408a0725", complete); break;
+                case SplitQuest.CaseOfTheHiddenGrudge: CheckQuest("8910d1fffe64aa84ab139cae1cbd4160", complete); break;
                 case SplitQuest.CaseOfTheMissingBlueprint: CheckQuest("6a7a0e224825f53438991677673bf8f2", complete); break;
+                case SplitQuest.CaseOfTheMissingPiece: CheckQuest("c792c2548f9384c4d91f1e177b20e5b6", complete); break;
+                case SplitQuest.CaseOfTheSecretPassword: CheckQuest("af533c1f401ddbd4fbcb0534ae7b2b02", complete); break;
+                case SplitQuest.Coda: CheckQuest("a9d92dcc5b8d8774e9cf42e6d102b8b8", complete); break;
+                case SplitQuest.ConfurrsationOfSecrets: CheckQuest("9ccd001333d82ec4b850ac6c8764b0aa", complete); break;
+                case SplitQuest.CurseOfTheDogs: CheckQuest("855fd0c3ccfa0034696cf30a6cfdec67", complete); break;
+                case SplitQuest.DeletingDataNow: CheckQuest("1a4c920d0e230024689d0bf3e6c4561c", complete); break;
+                case SplitQuest.DogeKnight: CheckQuest("94ae6c5c46f536242b3b1de5e3898f82", complete); break;
+                case SplitQuest.Dragonblood: CheckQuest("0ebb95be47dcda247892e1b0494f67a7", complete); break;
+                case SplitQuest.EpicStaredown: CheckQuest("1c144a7d0689b2e42b19c5e7aabe5830", complete); break;
+                case SplitQuest.Epilogue: CheckQuest("061eee52668350242b85e584e87f6050", complete); break;
+                case SplitQuest.EyeOfEternity: CheckQuest("1f3a23f5eac051d48ace4ebefa2aa2d3", complete); break;
+                case SplitQuest.FakingPurrrivateMewan: CheckQuest("0a80760586bc17f4695b363f12f5c294", complete); break;
+                case SplitQuest.FinalPurreperations: CheckQuest("5fc5c861ad68fd94c9b917c87832baf7", complete); break;
+                case SplitQuest.FinalShard: CheckQuest("f5fb355c99570574bb46ca53c5134201", complete); break;
+                case SplitQuest.FindingPurrrivateMewan: CheckQuest("e45490684afec9f42b055b11ed42fac7", complete); break;
                 case SplitQuest.FirstKings: CheckQuest("4e1df48ecbf1f0940843cf6a758922ff", complete); break;
+                case SplitQuest.FursACrowd: CheckQuest("3f0853ce5421717458ae8abb4467a9bb", complete); break;
+                case SplitQuest.FurTheFurmily: CheckQuest("18dc7d46c3ba2164d94fecd4ffff8a4f", complete); break;
+                case SplitQuest.FurTheGreaterGood: CheckQuest("d5eb0f580b334d8439768f0846830f1d", complete); break;
+                case SplitQuest.FurTheMother: CheckQuest("8428350affea4674c9542ffa872ec2d2", complete); break;
+                case SplitQuest.FurTheSon: CheckQuest("4794a5e722a78cd44980e83bde8d3357", complete); break;
+                case SplitQuest.GiftOfWaterWalking: CheckQuest("02ed90ff49761af4e8bc438e528493ed", complete); break;
+                case SplitQuest.GiveToThePoor: CheckQuest("20d10d866618b82439c4f95125638135", complete); break;
+                case SplitQuest.GoodIntentions: CheckQuest("9c178c2f2d54dc54685643ccfe3d45a5", complete); break;
+                case SplitQuest.KeiNein: CheckQuest("4e54ec43c21570e49910658a8ba0e330", complete); break;
+                case SplitQuest.KingLupusI: CheckQuest("4b0ad8eab847f4b41bc4389778e0a1eb", complete); break;
                 case SplitQuest.Kingsblade: CheckQuest("2fcf4c7428d1e83428570caf34d8b530", complete); break;
+                case SplitQuest.KingsOfOld: CheckQuest("b36f0bc9b8d20fe4794d67dc02f3fd80", complete); break;
+                case SplitQuest.Labrathor: CheckQuest("6a9a4b0b85e3f8942aa70aa447cced8d", complete); break;
+                case SplitQuest.LionerAndWolfen: CheckQuest("ffbec5a34209edd47a8c3dce0a139a4f", complete); break;
+                case SplitQuest.LostTreasure: CheckQuest("4c632637c910065429618569d4a806a3", complete); break;
+                case SplitQuest.MagicUser: CheckQuest("5612bd65b1ecc814cbc9bd608559db47", complete); break;
+                case SplitQuest.Meat: CheckQuest("ccbf3d788d8275b429f31861c5690c16", complete); break;
+                case SplitQuest.MeatMeat: CheckQuest("4ce34bb985dffdd4b8c80da2821b6084", complete); break;
+                case SplitQuest.MeatMeatMeeeaaat: CheckQuest("a094a3f1648a1844884d24a352d2e54d", complete); break;
+                case SplitQuest.OfMetalsAndMagic: CheckQuest("f0bac905e280981408680b76e24b6907", complete); break;
+                case SplitQuest.OfSwordsAndTheWorthy: CheckQuest("33076b70be297ea4dbfcfd753e8f39e8", complete); break;
+                case SplitQuest.OhYouGonnaGetItNow: CheckQuest("9d080f3b53898d24a9dbd77f80b0afce", complete); break;
+                case SplitQuest.OrderOfTheEmeowrald: CheckQuest("ad2757c65d99f8647a6c4552cdc7ffa7", complete); break;
+                case SplitQuest.OverTheLimit: CheckQuest("4a6e45c142344724f9b5830b2764fc3e", complete); break;
+                case SplitQuest.PawlatinumChef: CheckQuest("e516ebe387f735b46ba6e33ded7a2e29", complete); break;
+                case SplitQuest.PawsitivelySecretContact: CheckQuest("f6d1c1dde10c6d545b5962100a1a5411", complete); break;
+                case SplitQuest.PawsTogether: CheckQuest("fc11103c9c75c9c45897bf3480fc1d8d", complete); break;
+                case SplitQuest.PowerfulOne: CheckQuest("3fa9425b2bf9cc546812ee0176dd9dc4", complete); break;
+                case SplitQuest.PowerOfTheHorde: CheckQuest("05a2474a84796c741983cc4213785c2b", complete); break;
+                case SplitQuest.Prelude: CheckQuest("9840685e69e1c4c4b9914d1589c23913", complete); break;
+                case SplitQuest.PundorasBox: CheckQuest("37721b39a7a009148babd6cfc1766577", complete); break;
+                case SplitQuest.PurrotectedMaze: CheckQuest("2b132ae2877b0bc41a5666edeaa91c2d", complete); break;
                 case SplitQuest.Purrsecutor: CheckQuest("98e574a60ffec244ba7a416ca2ae2bf7", complete); break;
+                case SplitQuest.ReclaimFelingard: CheckQuest("01ffb3fce7801b148ba5504728b09e9c", complete); break;
+                case SplitQuest.ReclaimTheEmpire: CheckQuest("c98575f4318ba954c8181ba9c73d5b0d", complete); break;
+                case SplitQuest.RescuingPurrrivateMewan: CheckQuest("2718778759f7ce34199dda5f6feb026f", complete); break;
+                case SplitQuest.ReturnOfTheCats: CheckQuest("6d0eae2d0e72359428c74178db20725f", complete); break;
+                case SplitQuest.RevengeOfFurindelmeow: CheckQuest("fce297f7753d23f45b9de879c8a7fb1b", complete); break;
+                case SplitQuest.RivalsOfAKind: CheckQuest("deef2183d78d42b4ab79a2a2f9b5c410", complete); break;
                 case SplitQuest.RockPaperScissors: CheckQuest("6c49b3bc9d49ae441b8b95897a58be26", complete); break;
+                case SplitQuest.SecondMovement: CheckQuest("c6cfd3c6003dad545902c62ed25ed9ab", complete); break;
+                case SplitQuest.SkullOfAWarrior: CheckQuest("2e5779b0fb4518b45b89bc28e2255e94", complete); break;
+                case SplitQuest.SpellOfTheCats: CheckQuest("fa563330402243e4c97a57649134cdfa", complete); break;
+                case SplitQuest.SpiritInTheLake: CheckQuest("68c10979b8cc3ee47956a0b2a179f732", complete); break;
+                case SplitQuest.StealFromTheRich: CheckQuest("c9388e46c368f2741baa5d4c10286c19", complete); break;
+                case SplitQuest.TalentedSoldier: CheckQuest("37a90349d9fb9f7428480af40f500723", complete); break;
+                case SplitQuest.TaleOfACatAndADog: CheckQuest("d6a144fc243723c4ca5be86d9d6c1dc6", complete); break;
+                case SplitQuest.ThisIsIt1: CheckQuest("eb3760c19266d31459bd9b4dbcc566f0", complete); break;
+                case SplitQuest.ThisIsIt2: CheckQuest("3c292b0f3c18c124e98779a60d7f3b3e", complete); break;
+                case SplitQuest.TrackingPurrrivateMewan: CheckQuest("c06e2b12b5e6d274295b4b36c3b5ce8a", complete); break;
                 case SplitQuest.TrialOfLionardo: CheckQuest("e123b3ec60d9de94da9fd04e0e6d8551", complete); break;
+                case SplitQuest.TrialOfTheFirstKings: CheckQuest("8f2dc042404d89244881a69b06078aa5", complete); break;
+                case SplitQuest.TrialOfWoofhauser: CheckQuest("34f8fd72c4c08404aaebd934d1c8418c", complete); break;
+                case SplitQuest.TrueWeapon: CheckQuest("a54d620348c1b4249bcb6f3cc981e6ef", complete); break;
                 case SplitQuest.Tutorial: CheckQuest("01dcb2d755fd9c345bfa2ac2cfd66788", complete); break;
+                case SplitQuest.TwinCaves1: CheckQuest("045578b86c7be014bb54e01a71ff813f", complete); break;//might be switched
+                case SplitQuest.TwinCaves2: CheckQuest("e5beee3b4f1a82144b01fa501693709e", complete); break;//might be switched
+                case SplitQuest.TwinCavesAgain1: CheckQuest("cdf2ee2cd33170b48a331d178c7fab97", complete); break;
+                case SplitQuest.TwinCavesAgain2: CheckQuest("f129fb1ae760da645bd6a57ed3a63bcf", complete); break;
+                case SplitQuest.TwinDelivery: CheckQuest("da15597c2b93f5743a9b050bff9404b9", complete); break;
+                case SplitQuest.TwinDeliveryAgain: CheckQuest("a764ee1d3112c4c4fb9b415022813cff", complete); break;
+                case SplitQuest.WeaponsmithDoggo: CheckQuest("ce48d499ebee9cb4b8fa87e56107491f", complete); break;
+                case SplitQuest.Wooftopia: CheckQuest("f0939a9e7baa3a741a4e312665555556", complete); break;
+                case SplitQuest.YoungPup: CheckQuest("6bb6f0d7ade62064d823819010d74e4e", complete); break;
             }
         }
         private void CheckQuest(string guid, bool complete) {
