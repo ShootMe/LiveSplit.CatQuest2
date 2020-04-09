@@ -125,10 +125,13 @@ namespace LiveSplit.CatQuest2 {
             DataTable dt = new DataTable();
             dt.Columns.Add("Event", typeof(string));
             try {
-                StringReader sr = new StringReader(File.ReadAllText(LogManager.LOG_FILE));
-                string line;
-                while (!string.IsNullOrEmpty((line = sr.ReadLine()))) {
-                    dt.Rows.Add(line);
+                if (File.Exists(LogManager.LOG_FILE)) {
+                    using (StreamReader sr = new StreamReader(LogManager.LOG_FILE)) {
+                        string line;
+                        while (!string.IsNullOrEmpty(line = sr.ReadLine())) {
+                            dt.Rows.Add(line);
+                        }
+                    }
                 }
 
                 using (LogViewer logViewer = new LogViewer() { DataSource = dt }) {

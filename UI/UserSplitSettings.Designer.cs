@@ -80,7 +80,7 @@
             this.cboValue.FormattingEnabled = true;
             this.cboValue.Location = new System.Drawing.Point(247, 1);
             this.cboValue.Name = "cboValue";
-            this.cboValue.Size = new System.Drawing.Size(202, 21);
+            this.cboValue.Size = new System.Drawing.Size(217, 21);
             this.cboValue.TabIndex = 3;
             this.cboValue.ValueMember = "Item1";
             this.cboValue.SelectedIndexChanged += new System.EventHandler(this.cboValue_SelectedIndexChanged);
@@ -97,7 +97,7 @@
             this.Controls.Add(this.cboValue);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "UserSplitSettings";
-            this.Size = new System.Drawing.Size(450, 23);
+            this.Size = new System.Drawing.Size(465, 23);
             ((System.ComponentModel.ISupportInitialize)(this.picHandle)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

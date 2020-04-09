@@ -9,7 +9,7 @@ namespace LiveSplit.CatQuest2 {
         AreaExit,
         [Description("Chest")]
         Chest,
-        [Description("Dungeon (Complete)")]
+        [Description("Dungeon")]
         DungeonComplete,
         [Description("Game Start")]
         GameStart,
@@ -19,7 +19,7 @@ namespace LiveSplit.CatQuest2 {
         Level,
         [Description("Quest (Start)")]
         QuestStart,
-        [Description("Quest (Complete)")]
+        [Description("Quest (End)")]
         QuestComplete,
         [Description("Royal Art")]
         RoyalArt,
