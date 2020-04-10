@@ -1,6 +1,8 @@
 ﻿using System.ComponentModel;
 namespace LiveSplit.CatQuest2 {
     public enum SplitDungeon {
+        [Description("Barking Cave")]
+        BarkingCave,
         [Description("Bay Cave")]
         BayCave,
         [Description("Blue Cave")]
@@ -17,6 +19,8 @@ namespace LiveSplit.CatQuest2 {
         CursedRuins,
         [Description("Decem Ruins")]
         DecemRuins,
+        [Description("Devigni Ruins")]
+        DevigniRuins,
         [Description("Empty Hole")]
         EmptyHole,
         [Description("Furrest Cave")]
@@ -67,6 +71,8 @@ namespace LiveSplit.CatQuest2 {
         SeasideCove,
         [Description("Septem Ruins")]
         SeptemRuins,
+        [Description("Septencin Ruins")]
+        SeptencinRuins,
         [Description("Tres Ruins")]
         TresRuins,
         [Description("Undecim Ruins")]

@@ -5,6 +5,8 @@ namespace LiveSplit.CatQuest2 {
         ArcaneHeadpawters,
         [Description("Bay Cave")]
         BayCave,
+        [Description("Barking Cave")]
+        BarkingCave,
         [Description("Blue Cave")]
         BlueCave,
         [Description("Brave Cave")]
@@ -19,6 +21,8 @@ namespace LiveSplit.CatQuest2 {
         CursedRuins,
         [Description("Decem Ruins")]
         DecemRuins,
+        [Description("Devigni Ruins")]
+        DevigniRuins,
         [Description("Empty Hole")]
         EmptyHole,
         [Description("First Bridge, The")]
@@ -81,6 +85,8 @@ namespace LiveSplit.CatQuest2 {
         SeasideCove,
         [Description("Septem Ruins")]
         SeptemRuins,
+        [Description("Septencin Ruins")]
+        SeptencinRuins,
         [Description("Tres Ruins")]
         TresRuins,
         [Description("Undecim Ruins")]
