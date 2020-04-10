@@ -298,6 +298,7 @@ namespace LiveSplit.CatQuest2 {
             switch (quest) {
                 case SplitKey.ArcaneHeadpawters: CheckKey("5a40932a9be236f46882840732c6ee25"); break;
                 case SplitKey.HottoDoggo: CheckKey("e4cbedfd820c2464b804015fd69e222c"); break;
+                case SplitKey.KeyOfValor: CheckKey("488cac877060b6a43b70ddb41f792cfc"); break;
                 case SplitKey.KingLionardoTrial: CheckKey("18c38d642116c05448a4d3cdbb341519"); break;
                 case SplitKey.KingWoofhausersTrial: CheckKey("bcaa342a1af3dba49adeb24e09b7cd03"); break;
                 case SplitKey.KingWoofhausersTrialKey1: CheckKey("dfe82a302eb1f6849bf8b651fb0b1338"); break;

@@ -5,6 +5,8 @@ namespace LiveSplit.CatQuest2 {
         ArcaneHeadpawters,
         [Description("Hotto Doggo (Door)")]
         HottoDoggo,
+        [Description("Key of Valor")]
+        KeyOfValor,
         [Description("King Lionardo's Trial (Door)")]
         KingLionardoTrial,
         [Description("King Woofhauser's Trial (Door)")]
