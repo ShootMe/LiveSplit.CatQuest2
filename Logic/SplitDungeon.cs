@@ -85,6 +85,8 @@ namespace LiveSplit.CatQuest2 {
         TombstoneCave,
         [Description("Tres Ruins")]
         TresRuins,
+        [Description("Trial of the First Kings")]
+        TrialOfTheFirstKings,
         [Description("Undecim Ruins")]
         UndecimRuins,
         [Description("Unus Ruins")]

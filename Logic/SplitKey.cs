@@ -28,6 +28,8 @@ namespace LiveSplit.CatQuest2 {
         [Description("Kit Cat (Door)")]
         KitCat,
         [Description("First Bridge, The (Door)")]
-        FirstBridge
+        FirstBridge,
+        [Description("Trial of the First Kings (Key)")]
+        TrialOfTheFirstKingsKey
     }
 }

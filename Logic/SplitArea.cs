@@ -99,6 +99,8 @@ namespace LiveSplit.CatQuest2 {
         TombstoneCave,
         [Description("Tres Ruins")]
         TresRuins,
+        [Description("Trial of the First Kings")]
+        TrialOfTheFirstKings,
         [Description("Undecim Ruins")]
         UndecimRuins,
         [Description("Unus Ruins")]
@@ -106,8 +108,6 @@ namespace LiveSplit.CatQuest2 {
         [Description("Whisk Cove")]
         WhiskCove,
         [Description("Winding Cove")]
-        WindingCove,
-        [Description("Zero Dimension Wolfen")]
-        ZeroDimensionWolfen
+        WindingCove
     }
 }

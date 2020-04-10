@@ -11,6 +11,12 @@ namespace LiveSplit.CatQuest2 {
         BarkingCaveRed,
         [Description("Barking Cave (Locked)")]
         BarkingCaveLocked,
+        [Description("Bay Cave (Wood)")]
+        BayCaveWood,
+        [Description("Bay Cave (Normal)")]
+        BayCaveNormal,
+        [Description("Bay Cave (Locked)")]
+        BayCaveLocked,
         [Description("Brave Cave (Wood S)")]
         BraveCaveWood1,
         [Description("Brave Cave (Wood N)")]
@@ -113,6 +119,24 @@ namespace LiveSplit.CatQuest2 {
         PawsCaveNormal,
         [Description("Paws Cave (Locked)")]
         PawsCaveLocked,
+        [Description("Pawt Cave (Wood 1)")]
+        PawtCaveWood1,
+        [Description("Pawt Cave (Wood 2)")]
+        PawtCaveWood2,
+        [Description("Pawt Cave (Wood 3)")]
+        PawtCaveWood3,
+        [Description("Pawt Cave (Wood 4)")]
+        PawtCaveWood4,
+        [Description("Pawt Cave (Wood 5)")]
+        PawtCaveWood5,
+        [Description("Pawt Cave (Wood 6)")]
+        PawtCaveWood6,
+        [Description("Pawt Cave (Wood 7)")]
+        PawtCaveWood7,
+        [Description("Pawt Cave (Normal)")]
+        PawtCaveNormal,
+        [Description("Pawt Cave (Locked)")]
+        PawtCaveLocked,
         [Description("Purrcluded Cave (Wood)")]
         PurrcludedCaveWood,
         [Description("Purrcluded Cave (Normal)")]
