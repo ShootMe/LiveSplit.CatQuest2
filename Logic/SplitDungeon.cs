@@ -17,6 +17,8 @@ namespace LiveSplit.CatQuest2 {
         CursedRuins,
         [Description("Decem Ruins")]
         DecemRuins,
+        [Description("Empty Hole")]
+        EmptyHole,
         [Description("Furrest Cave")]
         FurrestCave,
         [Description("Furrible Purrison")]
@@ -35,9 +37,11 @@ namespace LiveSplit.CatQuest2 {
         NovemRuins,
         [Description("Octo Ruins")]
         OctoRuins,
+        [Description("Pawful Cave")]
+        PawfulCave,
         [Description("Pawreign Cave")]
         PawreignCave,
-        [Description("Paw's Cave")]
+        [Description("Paws Cave")]
         PawsCave,
         [Description("Pawt Cave")]
         PawtCave,
@@ -47,12 +51,16 @@ namespace LiveSplit.CatQuest2 {
         PurrnCave,
         [Description("Puss Cave")]
         PussCave,
+        [Description("Quadecim Ruins")]
+        QuadecimRuins,
         [Description("Quattor Ruins")]
         QuattorRuins,
         [Description("River Hole")]
         RiverHole,
         [Description("Riverside Cove")]
         RiversideCove,
+        [Description("Ruff Cove")]
+        RuffCove,
         [Description("Saxim Ruins")]
         SaximRuins,
         [Description("Seaside Cove")]
@@ -61,9 +69,13 @@ namespace LiveSplit.CatQuest2 {
         SeptemRuins,
         [Description("Tres Ruins")]
         TresRuins,
+        [Description("Undecim Ruins")]
+        UndecimRuins,
         [Description("Unus Ruins")]
         UnusRuins,
         [Description("Whisk Cove")]
-        WhiskCove
+        WhiskCove,
+        [Description("Winding Cove")]
+        WindingCove
     }
 }

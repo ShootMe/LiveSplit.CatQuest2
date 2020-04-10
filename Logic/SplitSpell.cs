@@ -8,6 +8,10 @@ namespace LiveSplit.CatQuest2 {
         [Description("Furry Shield (Cave Grotto)")]
         FurryShield,
         [Description("Heal Paw (Overworld)")]
-        HealPaw
+        HealPaw,
+        [Description("Lightnyan (Overworld)")]
+        Lightnyan,
+        [Description("Purrserk (Whisk Cove)")]
+        Purrserk
     }
 }

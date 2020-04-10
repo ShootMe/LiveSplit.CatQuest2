@@ -27,6 +27,12 @@ namespace LiveSplit.CatQuest2 {
         CavePeasyLocked,
         [Description("Decem Ruins (Trial)")]
         DecemRuinsTrial,
+        [Description("Empty Hole (Wood)")]
+        EmptyHoleWood,
+        [Description("Empty Hole (Normal)")]
+        EmptyHoleNormal,
+        [Description("Empty Hole (Locked)")]
+        EmptyHoleLocked,
         [Description("Furrest Cave (Wood E)")]
         FurrestCaveWood1,
         [Description("Furrest Cave (Wood N)")]
@@ -59,9 +65,19 @@ namespace LiveSplit.CatQuest2 {
         NovemRuinsTrial,
         [Description("Octo Ruins (Trial)")]
         OctoRuinsTrial,
-        [Description("Paw's Cave (Normal)")]
+        [Description("Pawful Cave (Wood)")]
+        PawfulCaveWood,
+        [Description("Pawful Cave (Normal)")]
+        PawfulCaveNormal,
+        [Description("Pawful Cave (Locked)")]
+        PawfulCaveLocked,
+        [Description("Pawreign Cave (Normal)")]
+        PawreignCaveNormal,
+        [Description("Pawreign Cave (Locked)")]
+        PawreignCaveLocked,
+        [Description("Paws Cave (Normal)")]
         PawsCaveNormal,
-        [Description("Paw's Cave (Locked)")]
+        [Description("Paws Cave (Locked)")]
         PawsCaveLocked,
         [Description("Purrcluded Cave (Wood)")]
         PurrcludedCaveWood,
@@ -75,10 +91,20 @@ namespace LiveSplit.CatQuest2 {
         PussCaveNormal,
         [Description("Puss Cave (Locked)")]
         PussCaveLocked,
+        [Description("Quadecim Ruins (Trial)")]
+        QuadecimRuinsTrial,
         [Description("River Hole (Normal)")]
         RiverHoleNormal,
         [Description("River Hole (Locked)")]
         RiverHoleLocked,
+        [Description("Ruff Cove (Wood)")]
+        RuffCoveWood,
+        [Description("Ruff Cove (Normal S)")]
+        RuffCoveNormal1,
+        [Description("Ruff Cove (Normal E)")]
+        RuffCoveNormal2,
+        [Description("Ruff Cove (Locked)")]
+        RuffCoveLocked,
         [Description("Seaside Cove (Wood)")]
         SeasideCoveWood,
         [Description("Seaside Cove (Normal S)")]
@@ -86,6 +112,16 @@ namespace LiveSplit.CatQuest2 {
         [Description("Seaside Cove (Normal N)")]
         SeasideCoveNormal2,
         [Description("Septem Ruins (Trial)")]
-        SeptemRuinsTrial
+        SeptemRuinsTrial,
+        [Description("Undecim Ruins (Trial)")]
+        UndecimRuinsTrial,
+        [Description("Whisk Cove (Normal)")]
+        WhiskCoveNormal,
+        [Description("Whisk Cove (Locked)")]
+        WhiskCoveLocked,
+        [Description("Winding Cove (Normal)")]
+        WindingCoveNormal,
+        [Description("Winding Cove (Locked)")]
+        WindingCoveLocked
     }
 }

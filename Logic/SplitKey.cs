@@ -11,6 +11,8 @@ namespace LiveSplit.CatQuest2 {
         Kingsmarker3,
         [Description("Kingsmarker 4 (Portal)")]
         Kingsmarker4,
+        [Description("Kingsmarker 5 (Portal)")]
+        Kingsmarker5,
         [Description("Kit Cat (Door)")]
         KitCat,
         [Description("First Bridge, The (Door)")]
