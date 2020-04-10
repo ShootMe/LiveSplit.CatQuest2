@@ -139,7 +139,7 @@ namespace LiveSplit.CatQuest2 {
             SplitRoyalArt royalArt = Utility.GetEnumValue<SplitRoyalArt>(split.Value);
             switch (royalArt) {
                 case SplitRoyalArt.RollAttack: CheckRoyalArt(RoyalArts.RollAttack); break;
-                case SplitRoyalArt.RoyalSmash: CheckRoyalArt(RoyalArts.RoyalSmash); break;
+                case SplitRoyalArt.PawerSmash: CheckRoyalArt(RoyalArts.RoyalSmash); break;
                 case SplitRoyalArt.SpellSlot: CheckRoyalArt(RoyalArts.SpellSlot); break;
                 case SplitRoyalArt.WaterWalk: CheckRoyalArt(RoyalArts.WaterWalk); break;
             }
@@ -171,9 +171,13 @@ namespace LiveSplit.CatQuest2 {
                 case SplitChest.CavePeasyLocked: CheckChest("52f4486660d0fde41bf8082f42ae0fc1"); break;
                 case SplitChest.DecemRuinsRed: CheckChest("c0513ac7468734c4eba25eca1d33bac7"); break;
                 case SplitChest.DevigniRuinsRed: CheckChest("ecae2a670e00ba64d83740f858534800"); break;
+                case SplitChest.DuodecimRuinsRed: CheckChest("eb95beaa3d09e1d428c1222851c00cef"); break;
                 case SplitChest.EmptyHoleWood: CheckChest("75a1c34a8d522a846a27ff280bd55b1b"); break;
                 case SplitChest.EmptyHoleNormal: CheckChest("389160862c0dbac49a1b1a7a64fba2c3"); break;
                 case SplitChest.EmptyHoleLocked: CheckChest("c57f3bf417c494b4d92d9b02437d8e57"); break;
+                case SplitChest.FarfetchedCaveNormal1: CheckChest("dd3108d08f5fc704c9db5acca210d6e9"); break;
+                case SplitChest.FarfetchedCaveNormal2: CheckChest("cab6ab104b3beae41b5a81a9e6503afb"); break;
+                case SplitChest.FarfetchedCaveLocked: CheckChest("f670f8e7fe2db5f41b897b8f719add66"); break;
                 case SplitChest.FurrestCaveWood1: CheckChest("30f56ca35b31a6049af7ba04cfff6096"); break;
                 case SplitChest.FurrestCaveWood2: CheckChest("40775876df715834080cae00d1eccfc1"); break;
                 case SplitChest.FurrestCaveNormal: CheckChest("310fc77e07ed4ac4481ae92c23c3f435"); break;
@@ -182,16 +186,23 @@ namespace LiveSplit.CatQuest2 {
                 case SplitChest.FursakenCaveNormal1: CheckChest("9645b61eca57207498d3863b11053104"); break;
                 case SplitChest.FursakenCaveNormal2: CheckChest("89a9b3dc80974c54095c87679b5bcd52"); break;
                 case SplitChest.FursakenCaveLocked: CheckChest(""); break;
-                case SplitChest.KingLionardoRuinsNormal1: CheckChest("b4df01a6c473bca4abc1ac55b035c097"); break;
-                case SplitChest.KingLionardoRuinsNormal2: CheckChest("8fdfd5e4034240845af98f4983ee2d69"); break;
+                case SplitChest.KingDuosRuinsRed: CheckChest("1d55003af8dd99f4eaae161afb323da7"); break;
+                case SplitChest.KingLionardoTrialNormal1: CheckChest("b4df01a6c473bca4abc1ac55b035c097"); break;
+                case SplitChest.KingLionardoTrialNormal2: CheckChest("8fdfd5e4034240845af98f4983ee2d69"); break;
+                case SplitChest.KingLionardoTrialRed: CheckChest("85bd28267adeeb64ba8e89d102e6b063"); break;
                 case SplitChest.KingSigilRuinsNormal1: CheckChest("c63431d4f98d5644ea7b41ebe53f6969"); break;
                 case SplitChest.KingSigilRuinsNormal2: CheckChest("ec1200ce45611b54aaeed39661104ebf"); break;
+                case SplitChest.KingWoofhauserTrialWood: CheckChest("fddbc59c18fdb1343b1c23b84700320a"); break;
+                case SplitChest.KingWoofhauserTrialNormal: CheckChest("4dbdf68dec0b6c345bbeea88ad1bbf73"); break;
+                case SplitChest.KingWoofhauserTrialRed: CheckChest("b63fe8787c7b00944985e5157b1f17dc"); break;
+                case SplitChest.KingWoofhauserTrialLocked: CheckChest("4e76777f17f1e7344a466e4102654e4c"); break;
                 case SplitChest.KitsTrialNormal1: CheckChest("dfe9c3f08ae45cb4dac761894e9df127"); break;
                 case SplitChest.KitsTrialNormal2: CheckChest("7554f2abd0c00c141b86e7e6750312bf"); break;
                 case SplitChest.NovemRuinsRed: CheckChest("15059423ac280e34c9c4207bd723c348"); break;
                 case SplitChest.OctoRuinsRed: CheckChest("9277eb480428d7348844065abebf916c"); break;
                 case SplitChest.PawfulCaveWood: CheckChest("f0aee4feedf337843b849fb388071edf"); break;
-                case SplitChest.PawfulCaveNormal: CheckChest("0a0fa10e774447a4dadf2407b67f9498"); break;
+                case SplitChest.PawfulCaveNormal1: CheckChest("0a0fa10e774447a4dadf2407b67f9498"); break;
+                case SplitChest.PawfulCaveNormal2: CheckChest("03f70b5e899ff244c820eee9b9632eab"); break;
                 case SplitChest.PawfulCaveLocked: CheckChest("7fd103dff9394dd438c90ca85628ef02"); break;
                 case SplitChest.PawreignCaveNormal: CheckChest("3fcd0888ff22bf746af78443530bcdac"); break;
                 case SplitChest.PawreignCaveLocked: CheckChest("e09ce3f99f6daa741af064d79dc93da3"); break;
@@ -199,26 +210,44 @@ namespace LiveSplit.CatQuest2 {
                 case SplitChest.PawsCaveLocked: CheckChest("7dd459dda4ffaae4f9bee921ab1c34ed"); break;
                 case SplitChest.PurrcludedCaveWood: CheckChest("7e36399f52661e742b33cf0cd24dffb6"); break;
                 case SplitChest.PurrcludedCaveNormal: CheckChest("5842ebc0f1d07344f819535af273dc27"); break;
+                case SplitChest.PurrcludedCaveRed: CheckChest("b943ac934fd55ba4a9b3f3f87e11e50c"); break;
                 case SplitChest.PurrcludedCaveLocked: CheckChest("dde373c035825d24a9f2823def041a2b"); break;
+                case SplitChest.PurrnCaveWood: CheckChest("8b7d0b8df5e45b047a2eda35c2cb641c"); break;
+                case SplitChest.PurrnCaveNormal: CheckChest("6b2a87d7d580c5e4b88dec8d699d453f"); break;
+                case SplitChest.PurrnCaveRed: CheckChest("18d629a7f1100ed468756fe6985873f2"); break;
+                case SplitChest.PurrnCaveLocked: CheckChest("0b898adb599fcfa4f852b88b8cce43f2"); break;
                 case SplitChest.PussCaveWood: CheckChest("283881cfffb372745a319ed840e30650"); break;
-                case SplitChest.PussCaveNormal: CheckChest("81a2b57ca1b34fd4a87837f50c27cd29"); break;
+                case SplitChest.PussCaveNormal1: CheckChest("81a2b57ca1b34fd4a87837f50c27cd29"); break;
+                case SplitChest.PussCaveNormal2: CheckChest("5c703b352a282524799a21a532dc3f5a"); break;
                 case SplitChest.PussCaveLocked: CheckChest("c32ccfce02d41924e9115d9fff8afa7b"); break;
                 case SplitChest.QuadecimRuinsRed: CheckChest("b7af8be1191e81d4ea10bbf75f3e5ee4"); break;
                 case SplitChest.RiverHoleNormal: CheckChest("acecd3d57514bad42a0da7473d6dcbf2"); break;
                 case SplitChest.RiverHoleLocked: CheckChest("2ed9560b288e71446ad728c1be4fdc53"); break;
+                case SplitChest.RiversideCoveWood1: CheckChest("ad702f6c47f39c94f9c7b5de181675c5"); break;
+                case SplitChest.RiversideCoveWood2: CheckChest("ae4261ff09467f847916d032792ae52a"); break;
+                case SplitChest.RiversideCoveNormal: CheckChest("3239845313d27804ca2eaf12ce68cfd6"); break;
+                case SplitChest.RiversideCoveRed: CheckChest("faad3af1941071445948012f9d175b7c"); break;
+                case SplitChest.RiversideCoveLocked: CheckChest("067f770ae4a62de4097bb45b6b475a2c"); break;
                 case SplitChest.RuffCoveWood: CheckChest("9598a1705f14d744f94fd55277130a70"); break;
                 case SplitChest.RuffCoveNormal1: CheckChest("076f5fba1049fbd41a2177f1e83c1c75"); break;
                 case SplitChest.RuffCoveNormal2: CheckChest("9e908ce23a7df1743982a674510672fe"); break;
                 case SplitChest.RuffCoveLocked: CheckChest("f5a94893dff0d8a438b77f589fdeb728"); break;
+                case SplitChest.SandyPitWood: CheckChest("ed0114fc607babb419856f7d8104addb"); break;
+                case SplitChest.SandyPitNormal: CheckChest("4d15f00c922025740ac7bd82f26e7e40"); break;
+                case SplitChest.SandyPitLocked: CheckChest("dcd6cc056c4c10040b68140c4b6c7927"); break;
+                case SplitChest.SaximRuinsRed: CheckChest("e81c2ef381c5a4341bde3282a204b036"); break;
                 case SplitChest.SeasideCoveWood: CheckChest("befac82108769ce468a5b31018167604"); break;
                 case SplitChest.SeasideCoveNormal1: CheckChest("326206b46b413614dbc436f5e5f58606"); break;
                 case SplitChest.SeasideCoveNormal2: CheckChest("05e27c72b5d7ded4eb6123728f595f63"); break;
                 case SplitChest.SeptemRuinsRed: CheckChest("d098e64e1d7eb10449ba72c0407d443d"); break;
                 case SplitChest.SeptencinRuinsRed: CheckChest("60077b3cc753273488bae4c0f95ca698"); break;
                 case SplitChest.SeptencinRuinsLocked: CheckChest("4b146bf11e9400e4988f8d5ff6f14663"); break;
+                case SplitChest.TombstoneCaveRed: CheckChest("13bd744975bf541418358e7b65b4a03a"); break;
+                case SplitChest.TombstoneCaveLocked: CheckChest("20587626fd053f84687496f9372bbdee"); break;
                 case SplitChest.UndecimRuinsRed: CheckChest("c60921c05dc8c2243a6675025de7ca38"); break;
                 case SplitChest.WhiskCoveNormal: CheckChest("124537d805f6b724ebecf02a8d08ecdf"); break;
                 case SplitChest.WhiskCoveLocked: CheckChest("d872decf091ebdd4d8df0bd4e28c783b"); break;
+                case SplitChest.WindingCoveWood: CheckChest("abbd36fb56aff8e43ba948cc48d17c0e"); break;
                 case SplitChest.WindingCoveNormal: CheckChest("32fb8cf774f07db4083b6d74c8b121f9"); break;
                 case SplitChest.WindingCoveLocked: CheckChest("b51c97d398d4d564f9a64f72a9e63906"); break;
             }
@@ -239,6 +268,7 @@ namespace LiveSplit.CatQuest2 {
             SplitSpell spell = Utility.GetEnumValue<SplitSpell>(split.Value);
             switch (spell) {
                 case SplitSpell.Flamepurr: CheckSpell("f40361ad748bef44e8df76b76af05a80"); break;
+                case SplitSpell.ForceWoofer: CheckSpell("e5fc04dd6f6f7ac4daab9f80d3ee91ff"); break;
                 case SplitSpell.Freezepaw: CheckSpell("347e2dd12ccbd254a9bdc587cee9daa5"); break;
                 case SplitSpell.FurryShield: CheckSpell("3357e1ce56e242a40a9d37bb37d02b7a"); break;
                 case SplitSpell.HealPaw: CheckSpell("204b183d154bcbf4fa8f5fc1662fbb1c"); break;
@@ -255,7 +285,12 @@ namespace LiveSplit.CatQuest2 {
             SplitKey quest = Utility.GetEnumValue<SplitKey>(split.Value);
             switch (quest) {
                 case SplitKey.ArcaneHeadpawters: CheckKey("5a40932a9be236f46882840732c6ee25"); break;
-                case SplitKey.KingLionardoRuins: CheckKey("18c38d642116c05448a4d3cdbb341519"); break;
+                case SplitKey.HottoDoggo: CheckKey("e4cbedfd820c2464b804015fd69e222c"); break;
+                case SplitKey.KingLionardoTrial: CheckKey("18c38d642116c05448a4d3cdbb341519"); break;
+                case SplitKey.KingWoofhausersTrial: CheckKey("bcaa342a1af3dba49adeb24e09b7cd03"); break;
+                case SplitKey.KingWoofhausersTrialKey1: CheckKey("dfe82a302eb1f6849bf8b651fb0b1338"); break;
+                case SplitKey.KingWoofhausersTrialKey2: CheckKey("e4e54b60b7401034987e3bacf2ea8c7a"); break;
+                case SplitKey.KingWoofhausersTrialKey3: CheckKey("7817996717709b249a92377ab6b5e4c3"); break;
                 case SplitKey.Kingsmarker2: CheckKey("8999191aaf53a437ba2c892d404343de"); break;
                 case SplitKey.Kingsmarker3: CheckKey("31d65870769db4d43b71a47497f5e15d"); break;
                 case SplitKey.Kingsmarker4: CheckKey("82f6db3dc8b224a2996051e6f841d0b7"); break;
@@ -390,13 +425,16 @@ namespace LiveSplit.CatQuest2 {
                 case SplitDungeon.CursedRuins: sceneToCheck = "Ruins_Cursed"; break;
                 case SplitDungeon.DecemRuins: sceneToCheck = "Ruins_Decem"; break;
                 case SplitDungeon.DevigniRuins: sceneToCheck = "Ruins_Devigni"; break;
+                case SplitDungeon.DuodecimRuins: sceneToCheck = "Ruins_Duodecim"; break;
                 case SplitDungeon.EmptyHole: sceneToCheck = "Tomb_emptyhole"; break;
+                case SplitDungeon.FarfetchedCave: sceneToCheck = "Tomb_farfetchedcave"; break;
                 case SplitDungeon.FurrestCave: sceneToCheck = "Cave_furrestcave"; break;
                 case SplitDungeon.FurriblePurrison: sceneToCheck = "Cave_furriblecave"; break;
                 case SplitDungeon.FursakenCave: sceneToCheck = "Cave_fursakencave"; break;
                 case SplitDungeon.KingDuosRuins: sceneToCheck = "Ruins_Duos"; break;
-                case SplitDungeon.KingLionardoRuins: sceneToCheck = "Ruins_Lionardo"; break;
+                case SplitDungeon.KingLionardoTrial: sceneToCheck = "Ruins_Lionardo"; break;
                 case SplitDungeon.KingSigilRuins: sceneToCheck = "Ruins_KingSigil"; break;
+                case SplitDungeon.KingWoofhausersTrial: sceneToCheck = "Ruins_Woofhauser"; break;
                 case SplitDungeon.MountainCave: sceneToCheck = "Cave_mountaincave"; break;
                 case SplitDungeon.NovemRuins: sceneToCheck = "Ruins_Novem"; break;
                 case SplitDungeon.OctoRuins: sceneToCheck = "Ruins_Octo"; break;
@@ -412,10 +450,12 @@ namespace LiveSplit.CatQuest2 {
                 case SplitDungeon.RiverHole: sceneToCheck = "Cave_riverhole"; break;
                 case SplitDungeon.RiversideCove: sceneToCheck = "Cave_riversidecove"; break;
                 case SplitDungeon.RuffCove: sceneToCheck = "Tomb_ruffcave"; break;
+                case SplitDungeon.SandyPit: sceneToCheck = "Tomb_sandypit"; break;
                 case SplitDungeon.SaximRuins: sceneToCheck = "Ruins_Saxim"; break;
                 case SplitDungeon.SeasideCove: sceneToCheck = "Cave_seasidecove"; break;
                 case SplitDungeon.SeptemRuins: sceneToCheck = "Ruins_Septem"; break;
                 case SplitDungeon.SeptencinRuins: sceneToCheck = "Ruins_Septencin"; break;
+                case SplitDungeon.TombstoneCave: sceneToCheck = "Tomb_tombstonecave"; break;
                 case SplitDungeon.TresRuins: sceneToCheck = "Ruins_Tres"; break;
                 case SplitDungeon.UndecimRuins: sceneToCheck = "Ruins_Undecim"; break;
                 case SplitDungeon.UnusRuins: sceneToCheck = "Ruins_Unus"; break;
@@ -441,15 +481,18 @@ namespace LiveSplit.CatQuest2 {
                 case SplitArea.CursedRuins: CheckScene(enter, "Ruins_Cursed"); break;
                 case SplitArea.DecemRuins: CheckScene(enter, "Ruins_Decem"); break;
                 case SplitArea.DevigniRuins: CheckScene(enter, "Ruins_Devigni"); break;
+                case SplitArea.DuodecimRuins: CheckScene(enter, "Ruins_Duodecim"); break;
                 case SplitArea.EmptyHole: CheckScene(enter, "Tomb_emptyhole"); break;
+                case SplitArea.FarfetchedCave: CheckScene(enter, "Tomb_farfetchedcave"); break;
                 case SplitArea.FirstBridge: CheckScene(enter, "Ruins_KingStatues"); break;
                 case SplitArea.FurrestCave: CheckScene(enter, "Cave_furrestcave"); break;
                 case SplitArea.FurriblePurrison: CheckScene(enter, "Cave_furriblecave"); break;
                 case SplitArea.FursakenCave: CheckScene(enter, "Cave_fursakencave"); break;
                 case SplitArea.HiddenCave: CheckScene(enter, "Cave_hiddencave"); break;
                 case SplitArea.KingDuosRuins: CheckScene(enter, "Ruins_Duos"); break;
-                case SplitArea.KingLionardoRuins: CheckScene(enter, "Ruins_Lionardo"); break;
+                case SplitArea.KingLionardoTrial: CheckScene(enter, "Ruins_Lionardo"); break;
                 case SplitArea.KingSigilRuins: CheckScene(enter, "Ruins_KingSigil"); break;
+                case SplitArea.KingWoofhausersTrial: CheckScene(enter, "Ruins_Woofhauser"); break;
                 case SplitArea.Kingsmarker: CheckScene(enter, "Ruins_Kingsmarker"); break;
                 case SplitArea.KitCat: CheckScene(enter, "Interior_KitCat"); break;
                 case SplitArea.KitsTrial: CheckScene(enter, "KitCat_01_Subscene"); break;
@@ -469,15 +512,18 @@ namespace LiveSplit.CatQuest2 {
                 case SplitArea.RiverHole: CheckScene(enter, "Cave_riverhole"); break;
                 case SplitArea.RiversideCove: CheckScene(enter, "Cave_riversidecove"); break;
                 case SplitArea.RuffCove: CheckScene(enter, "Tomb_ruffcave"); break;
+                case SplitArea.SandyPit: CheckScene(enter, "Tomb_sandypit"); break;
                 case SplitArea.SaximRuins: CheckScene(enter, "Ruins_Saxim"); break;
                 case SplitArea.SeasideCove: CheckScene(enter, "Cave_seasidecove"); break;
                 case SplitArea.SeptemRuins: CheckScene(enter, "Ruins_Septem"); break;
                 case SplitArea.SeptencinRuins: CheckScene(enter, "Ruins_Septencin"); break;
+                case SplitArea.TombstoneCave: CheckScene(enter, "Tomb_tombstonecave"); break;
                 case SplitArea.TresRuins: CheckScene(enter, "Ruins_Tres"); break;
                 case SplitArea.UndecimRuins: CheckScene(enter, "Ruins_Undecim"); break;
                 case SplitArea.UnusRuins: CheckScene(enter, "Ruins_Unus"); break;
                 case SplitArea.WhiskCove: CheckScene(enter, "Cave_whiskcove"); break;
                 case SplitArea.WindingCove: CheckScene(enter, "Tomb_windingcave"); break;
+                case SplitArea.ZeroDimensionWolfen: CheckScene(enter, "ZeroDimension_Wolfen_Subscene"); break;
             }
         }
         private void CheckScene(bool enter, string sceneToCheck) {

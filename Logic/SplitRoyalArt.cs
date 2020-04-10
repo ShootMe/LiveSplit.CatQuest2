@@ -1,10 +1,10 @@
 ﻿using System.ComponentModel;
 namespace LiveSplit.CatQuest2 {
     public enum SplitRoyalArt {
+        [Description("Pawer Smash")]
+        PawerSmash,
         [Description("Roll Attack")]
         RollAttack,
-        [Description("Royal Smash")]
-        RoyalSmash,
         [Description("Spell Slot")]
         SpellSlot,
         [Description("Water Walk")]

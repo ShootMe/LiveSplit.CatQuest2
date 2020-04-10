@@ -37,6 +37,8 @@ namespace LiveSplit.CatQuest2 {
         CavePeasyLocked,
         [Description("Decem Ruins (Red)")]
         DecemRuinsRed,
+        [Description("Duodecim Ruins (Red)")]
+        DuodecimRuinsRed,
         [Description("Devigni Ruins (Red)")]
         DevigniRuinsRed,
         [Description("Empty Hole (Wood)")]
@@ -45,6 +47,12 @@ namespace LiveSplit.CatQuest2 {
         EmptyHoleNormal,
         [Description("Empty Hole (Locked)")]
         EmptyHoleLocked,
+        [Description("Far-fetched Cave (Normal)")]
+        FarfetchedCaveNormal1,
+        [Description("Far-fetched Cave (Normal Hidden)")]
+        FarfetchedCaveNormal2,
+        [Description("Far-fetched Cave (Locked)")]
+        FarfetchedCaveLocked,
         [Description("Furrest Cave (Wood E)")]
         FurrestCaveWood1,
         [Description("Furrest Cave (Wood N)")]
@@ -61,14 +69,26 @@ namespace LiveSplit.CatQuest2 {
         FursakenCaveNormal2,
         [Description("Fursaken Cave (Locked)")]
         FursakenCaveLocked,
-        [Description("King Lionardo Ruins (Normal S)")]
-        KingLionardoRuinsNormal1,
-        [Description("King Lionardo Ruins (Normal N)")]
-        KingLionardoRuinsNormal2,
+        [Description("King Duos Ruins (Red)")]
+        KingDuosRuinsRed,
+        [Description("King Lionardo's Trial (Normal S)")]
+        KingLionardoTrialNormal1,
+        [Description("King Lionardo's Trial (Normal N)")]
+        KingLionardoTrialNormal2,
+        [Description("King Lionardo's Trial (Red)")]
+        KingLionardoTrialRed,
         [Description("King Sigil Ruins (Normal W)")]
         KingSigilRuinsNormal1,
         [Description("King Sigil Ruins (Normal E)")]
         KingSigilRuinsNormal2,
+        [Description("King Woofhauser's Trial (Wood)")]
+        KingWoofhauserTrialWood,
+        [Description("King Woofhauser's Trial (Normal)")]
+        KingWoofhauserTrialNormal,
+        [Description("King Woofhauser's Trial (Red)")]
+        KingWoofhauserTrialRed,
+        [Description("King Woofhauser's Trial (Locked)")]
+        KingWoofhauserTrialLocked,
         [Description("Kits Trial (Normal W)")]
         KitsTrialNormal1,
         [Description("Kits Trial (Normal E)")]
@@ -80,7 +100,9 @@ namespace LiveSplit.CatQuest2 {
         [Description("Pawful Cave (Wood)")]
         PawfulCaveWood,
         [Description("Pawful Cave (Normal)")]
-        PawfulCaveNormal,
+        PawfulCaveNormal1,
+        [Description("Pawful Cave (Normal Hidden)")]
+        PawfulCaveNormal2,
         [Description("Pawful Cave (Locked)")]
         PawfulCaveLocked,
         [Description("Pawreign Cave (Normal)")]
@@ -95,12 +117,24 @@ namespace LiveSplit.CatQuest2 {
         PurrcludedCaveWood,
         [Description("Purrcluded Cave (Normal)")]
         PurrcludedCaveNormal,
+        [Description("Purrcluded Cave (Red)")]
+        PurrcludedCaveRed,
         [Description("Purrcluded Cave (Locked)")]
         PurrcludedCaveLocked,
+        [Description("Purrn Cave (Wood)")]
+        PurrnCaveWood,
+        [Description("Purrn Cave (Normal)")]
+        PurrnCaveNormal,
+        [Description("Purrn Cave (Red)")]
+        PurrnCaveRed,
+        [Description("Purrn Cave (Locked)")]
+        PurrnCaveLocked,
         [Description("Puss Cave (Wood)")]
         PussCaveWood,
         [Description("Puss Cave (Normal)")]
-        PussCaveNormal,
+        PussCaveNormal1,
+        [Description("Puss Cave (Normal Hidden)")]
+        PussCaveNormal2,
         [Description("Puss Cave (Locked)")]
         PussCaveLocked,
         [Description("Quadecim Ruins (Red)")]
@@ -109,6 +143,16 @@ namespace LiveSplit.CatQuest2 {
         RiverHoleNormal,
         [Description("River Hole (Locked)")]
         RiverHoleLocked,
+        [Description("Riverside Cove (Wood W)")]
+        RiversideCoveWood1,
+        [Description("Riverside Cove (Wood E)")]
+        RiversideCoveWood2,
+        [Description("Riverside Cove (Normal)")]
+        RiversideCoveNormal,
+        [Description("Riverside Cove (Red)")]
+        RiversideCoveRed,
+        [Description("Riverside Cove (Locked)")]
+        RiversideCoveLocked,
         [Description("Ruff Cove (Wood)")]
         RuffCoveWood,
         [Description("Ruff Cove (Normal S)")]
@@ -117,6 +161,14 @@ namespace LiveSplit.CatQuest2 {
         RuffCoveNormal2,
         [Description("Ruff Cove (Locked)")]
         RuffCoveLocked,
+        [Description("Sandy Pit (Wood)")]
+        SandyPitWood,
+        [Description("Sandy Pit (Normal)")]
+        SandyPitNormal,
+        [Description("Sandy Pit (Locked)")]
+        SandyPitLocked,
+        [Description("Saxim Ruins (Red)")]
+        SaximRuinsRed,
         [Description("Seaside Cove (Wood)")]
         SeasideCoveWood,
         [Description("Seaside Cove (Normal S)")]
@@ -129,12 +181,18 @@ namespace LiveSplit.CatQuest2 {
         SeptencinRuinsRed,
         [Description("Septencin Ruins (Locked)")]
         SeptencinRuinsLocked,
+        [Description("Tombstone Cave (Red)")]
+        TombstoneCaveRed,
+        [Description("Tombstone Cave (Locked)")]
+        TombstoneCaveLocked,
         [Description("Undecim Ruins (Red)")]
         UndecimRuinsRed,
         [Description("Whisk Cove (Normal)")]
         WhiskCoveNormal,
         [Description("Whisk Cove (Locked)")]
         WhiskCoveLocked,
+        [Description("Winding Cove (Wood)")]
+        WindingCoveWood,
         [Description("Winding Cove (Normal)")]
         WindingCoveNormal,
         [Description("Winding Cove (Locked)")]

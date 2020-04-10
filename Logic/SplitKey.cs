@@ -3,8 +3,18 @@ namespace LiveSplit.CatQuest2 {
     public enum SplitKey {
         [Description("Arcane Headpawters (Door)")]
         ArcaneHeadpawters,
-        [Description("King Lionardo Ruins (Door)")]
-        KingLionardoRuins,
+        [Description("Hotto Doggo (Door)")]
+        HottoDoggo,
+        [Description("King Lionardo's Trial (Door)")]
+        KingLionardoTrial,
+        [Description("King Woofhauser's Trial (Door)")]
+        KingWoofhausersTrial,
+        [Description("King Woofhauser's Trial (Key 1)")]
+        KingWoofhausersTrialKey1,
+        [Description("King Woofhauser's Trial (Key 2)")]
+        KingWoofhausersTrialKey2,
+        [Description("King Woofhauser's Trial (Key 3)")]
+        KingWoofhausersTrialKey3,
         [Description("Kingsmarker 2 (Portal)")]
         Kingsmarker2,
         [Description("Kingsmarker 3 (Portal)")]
