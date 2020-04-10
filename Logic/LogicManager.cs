@@ -254,28 +254,6 @@ namespace LiveSplit.CatQuest2 {
         private void CheckKey(Split split) {
             SplitKey quest = Utility.GetEnumValue<SplitKey>(split.Value);
             switch (quest) {
-                //BarkingCave d2be1b8b9c1837a4bb1b04767f61100e
-                //CatpitalCave 3bd16a6967c679e4f81ece15a1197ef7
-                //CavePeasy 0cc910dd93badaa4499bdf8cd6a100f6
-                //DecemRuins 7f2e61a385842124d995c52b44fa667f
-                //DevigniRuins 8f4cd90ad2e3f244d957f542cfbee0f7
-                //EmptyHole 43a92655bc926b541b2c6933fce1ce36
-                //FurrestCave c621211c245b8e248bf84bec25c5bdbf
-                //PawfulCave 50c6e95c6f9a6b946bb12a5cdce7ae39
-                //PawreignCave 8e4a0860886f4084db8dcbe0e5a3ee65
-                //PawsCave 54da0da6a4589754c80370337f3b72e2
-                //PurrcludedCave 4ab4792868ce91e4694c957d1a3749bd
-                //PussCave 1a0e7969190456f4fa50a0f2b094b274
-                //NovemRuins cfc6c2c022c117c49bebd2ee23afa801
-                //OctoRuins 37fb6c998616c8843838f8f7eca83fc2
-                //QuadecimRuins 5c112596c4bcd634495b2736ccbd7583
-                //RiverHole d74ac0cc3d4d62e41a0ec3fc70026b34
-                //RuffCove cc59cbbdbe1d6412f9f84db08922ea2a
-                //SeptemRuins b2d4d50737b248242b76f05ac17c2e5f
-                //SeptencinRuins 1a5736c141d319543bb173afe9e1d12d
-                //UndecimRuins 53be2b68af9f8a34a8571f325f66699e
-                //WhiskCove 524ad8edcf842ed40979c69a53665206
-                //WindingCove 855e6c49e81396c4a9bf3d1e273a2817
                 case SplitKey.ArcaneHeadpawters: CheckKey("5a40932a9be236f46882840732c6ee25"); break;
                 case SplitKey.KingLionardoRuins: CheckKey("18c38d642116c05448a4d3cdbb341519"); break;
                 case SplitKey.Kingsmarker2: CheckKey("8999191aaf53a437ba2c892d404343de"); break;
