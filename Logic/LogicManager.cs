@@ -64,6 +64,7 @@ namespace LiveSplit.CatQuest2 {
                 }
                 InitializeSplit();
             }
+
             if (CurrentSplit < Settings.Autosplits.Count) {
                 CheckSplit(Settings.Autosplits[CurrentSplit], !Running);
                 if (!Running) {
@@ -84,7 +85,7 @@ namespace LiveSplit.CatQuest2 {
             int savedGame = (int)Memory.SavedGame();
             bool hasSavedGame = savedGame != 0;
 
-            if (!updateValues && !hasSavedGame) {
+            if (!updateValues && !hasSavedGame && split.Type != SplitType.AreaEnter && split.Type != SplitType.AreaExit) {
                 return;
             }
 
@@ -129,7 +130,7 @@ namespace LiveSplit.CatQuest2 {
                     break;
             }
 
-            if (!hasSavedGame && Running) {
+            if (!hasSavedGame && Running && split.Type != SplitType.AreaEnter && split.Type != SplitType.AreaExit) {
                 ShouldSplit = false;
             } else if (DateTime.Now > splitLate) {
                 ShouldSplit = true;
@@ -323,15 +324,9 @@ namespace LiveSplit.CatQuest2 {
             }
         }
         private void CheckChest(params string[] guids) {
-            bool value = false;
-            for (int i = 0; i < guids.Length; i++) {
-                if (Memory.HasChest(guids[i])) {
-                    value = true;
-                    break;
-                }
-            }
-            ShouldSplit = value && !lastBoolValue;
-            lastBoolValue = value;
+            int value = Memory.HasChests(guids);
+            ShouldSplit = value > lastIntValue;
+            lastIntValue = value;
         }
         private void CheckLevel(Split split) {
             int level = Memory.Level();
@@ -618,6 +613,7 @@ namespace LiveSplit.CatQuest2 {
                 case SplitArea.FursakenCave: CheckScene(enter, "Cave_fursakencave"); break;
                 case SplitArea.HiddenCave: CheckScene(enter, "Cave_hiddencave"); break;
                 case SplitArea.HiddenStash: CheckScene(enter, "Tomb_hiddenstash"); break;
+                case SplitArea.HottoDoggo: CheckScene(enter, "Interior_HottoDoggo"); break;
                 case SplitArea.HowlingMaze: CheckScene(enter, "Tomb_howlingmaze"); break;
                 case SplitArea.KingFelingardsTomb: CheckScene(enter, "BlackRuins_Felingard"); break;
                 case SplitArea.KingLionardoTrial: CheckScene(enter, "Ruins_Lionardo"); break;
@@ -657,6 +653,7 @@ namespace LiveSplit.CatQuest2 {
                 case SplitArea.SeptemRuins: CheckScene(enter, "Ruins_Septem"); break;
                 case SplitArea.SeptencinRuins: CheckScene(enter, "Ruins_Septencin"); break;
                 case SplitArea.TerrierfyingTomb: CheckScene(enter, "Tomb_terrierfying_tomb"); break;
+                case SplitArea.TitleScreen: CheckScene(enter, "TitleScene"); break;
                 case SplitArea.TombOfTheFollower: CheckScene(enter, "Tomb_cavefollower"); break;
                 case SplitArea.TombOfTheWolf: CheckScene(enter, "Tomb_wolfcave"); break;
                 case SplitArea.TombstoneCave: CheckScene(enter, "Tomb_tombstonecave"); break;

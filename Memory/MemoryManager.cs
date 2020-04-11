@@ -144,7 +144,8 @@ namespace LiveSplit.CatQuest2 {
             }
             return currentKeys;
         }
-        public bool HasChest(string guid) {
+        public int HasChests(string[] guids) {
+            int found = 0;
             IntPtr savedGame = SavedGame();
             IntPtr chests = Program.Read<IntPtr>(savedGame, 0x8, 0x58);
 
@@ -153,12 +154,15 @@ namespace LiveSplit.CatQuest2 {
             byte[] data = Program.Read(chests + 0x10, count * 0x4);
             for (int i = 0; i < count; i++) {
                 string id = Program.ReadString((IntPtr)BitConverter.ToUInt32(data, i * 0x4), 0xc, 0x0);
-                if (id == guid) {
-                    return true;
+                for (int j = 0; j < guids.Length; j++) {
+                    if (id == guids[j]) {
+                        found++;
+                        break;
+                    }
                 }
             }
 
-            return false;
+            return found;
         }
         public Dictionary<string, GuidItem> Chests() {
             IntPtr savedGame = SavedGame();

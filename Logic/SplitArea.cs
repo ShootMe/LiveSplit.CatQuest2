@@ -63,6 +63,8 @@ namespace LiveSplit.CatQuest2 {
         HiddenCave,
         [Description("Hidden Stash")]
         HiddenStash,
+        [Description("Hotto Doggo")]
+        HottoDoggo,
         [Description("Howling Maze")]
         HowlingMaze,
         [Description("King Felingard's Tomb")]
@@ -141,6 +143,8 @@ namespace LiveSplit.CatQuest2 {
         SeptencinRuins,
         [Description("Terrier-fying Tomb")]
         TerrierfyingTomb,
+        [Description("Title Screen")]
+        TitleScreen,
         [Description("Tomb of the Follower")]
         TombOfTheFollower,
         [Description("Tomb of the Wolf")]

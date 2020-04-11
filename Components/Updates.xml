@@ -1,5 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <updates>
+    <update version="1.0.7">
+        <files>
+            <file path="Components/LiveSplit.CatQuest2.dll" status="changed"/>
+        </files>
+        <changelog>
+            <change> Added Hotto Doggo Area </change>
+            <change> Added Title Screen Area </change>
+        </changelog>
+    </update>
     <update version="1.0.6">
         <files>
             <file path="Components/LiveSplit.CatQuest2.dll" status="changed"/>
