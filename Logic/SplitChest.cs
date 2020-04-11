@@ -119,7 +119,7 @@ namespace LiveSplit.CatQuest2 {
         KingWoofhauserTrialWood,
         [Description("King Woofhauser's Trial (Normal)")]
         KingWoofhauserTrialNormal,
-        [Description("King Woofhauser's Trial (Red)")]
+        [Description("King Woofhauser's Trial (Red 2X)")]
         KingWoofhauserTrialRed,
         [Description("King Woofhauser's Trial (Locked)")]
         KingWoofhauserTrialLocked,

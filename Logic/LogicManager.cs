@@ -225,7 +225,7 @@ namespace LiveSplit.CatQuest2 {
                 case SplitChest.KingSigilNormal: CheckChest("c63431d4f98d5644ea7b41ebe53f6969", "ec1200ce45611b54aaeed39661104ebf"); break;
                 case SplitChest.KingWoofhauserTrialWood: CheckChest("fddbc59c18fdb1343b1c23b84700320a"); break;
                 case SplitChest.KingWoofhauserTrialNormal: CheckChest("4dbdf68dec0b6c345bbeea88ad1bbf73"); break;
-                case SplitChest.KingWoofhauserTrialRed: CheckChest("b63fe8787c7b00944985e5157b1f17dc"); break;
+                case SplitChest.KingWoofhauserTrialRed: CheckChest("b63fe8787c7b00944985e5157b1f17dc", "fa14b162e84bf104d97f465a84c29063"); break;
                 case SplitChest.KingWoofhauserTrialLocked: CheckChest("4e76777f17f1e7344a466e4102654e4c"); break;
                 case SplitChest.KitsTrialNormal: CheckChest("dfe9c3f08ae45cb4dac761894e9df127", "7554f2abd0c00c141b86e7e6750312bf"); break;
                 case SplitChest.LonelyCaveRed: CheckChest("2a24d3a5d74e15843a1e1eae29a22799", "b570f022195c97c4d9824117c3127011"); break;
