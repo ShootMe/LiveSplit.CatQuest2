@@ -151,10 +151,8 @@ namespace LiveSplit.CatQuest2 {
         TaleOfACatAndADog,
         [Description("Talented Soldier, The (II)")]
         TalentedSoldier,
-        [Description("This Is It! (I)")]
-        ThisIsIt1,
-        [Description("This Is It! (II)")]
-        ThisIsIt2,
+        [Description("This Is It!")]
+        ThisIsIt,
         [Description("Tracking Purr-rivate Mewan (II)")]
         TrackingPurrrivateMewan,
         [Description("Trial of the First Kings")]
@@ -167,14 +165,10 @@ namespace LiveSplit.CatQuest2 {
         TrueWeapon,
         [Description("Tutorial")]
         Tutorial,
-        [Description("Twin Caves, The (N/S/E/W)")]
-        TwinCaves1,
-        [Description("Twin Caves, The (N/S/E/W)")]
-        TwinCaves2,
-        [Description("Twin Caves...again, The (N/S/E/W)")]
-        TwinCavesAgain1,
-        [Description("Twin Caves...again, The (N/S/E/W)")]
-        TwinCavesAgain2,
+        [Description("Twin Caves, The")]
+        TwinCaves,
+        [Description("Twin Caves...again, The")]
+        TwinCavesAgain,
         [Description("Twin Delivery, The")]
         TwinDelivery,
         [Description("Twin Delivery...again, The")]

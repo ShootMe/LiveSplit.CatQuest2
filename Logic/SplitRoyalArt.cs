@@ -5,8 +5,6 @@ namespace LiveSplit.CatQuest2 {
         PawerSmash,
         [Description("Roll Attack")]
         RollAttack,
-        [Description("Spell Slot")]
-        SpellSlot,
         [Description("Water Walk")]
         WaterWalk,
     }

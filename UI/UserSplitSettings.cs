@@ -82,7 +82,7 @@ namespace LiveSplit.CatQuest2 {
                     switch (nextControlType) {
                         case SplitType.AreaEnter:
                         case SplitType.AreaExit: DefaultValue = SplitArea.Overworld; break;
-                        case SplitType.Chest: DefaultValue = SplitChest.BraveCaveNormal1; break;
+                        case SplitType.Chest: DefaultValue = SplitChest.BraveCaveNormal; break;
                         case SplitType.DungeonComplete: DefaultValue = SplitDungeon.BraveCave; break;
                         case SplitType.Key: DefaultValue = SplitKey.ArcaneHeadpawters; break;
                         case SplitType.QuestStart:
