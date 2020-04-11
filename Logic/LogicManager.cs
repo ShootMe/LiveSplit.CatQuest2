@@ -59,9 +59,7 @@ namespace LiveSplit.CatQuest2 {
         public void Update(int currentSplit) {
             if (currentSplit != CurrentSplit) {
                 CurrentSplit = currentSplit;
-                if (CurrentSplit > 0) {
-                    Running = true;
-                }
+                Running = CurrentSplit > 0;
                 InitializeSplit();
             }
 
