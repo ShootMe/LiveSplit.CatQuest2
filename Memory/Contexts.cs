@@ -11,6 +11,19 @@
         Quest = 0x28,
         WorldGrid = 0x2c
     }
+    public enum GameContext {
+        IsActive = 0,
+        Health = 42,
+        IsKilled = 51,
+        IsMonster = 59,
+        MonsterType = 60,
+        IsNPC = 68,
+        Position = 77,
+        Stats = 116,
+        Unit = 125,
+        UnitFlags = 126,
+        UnitLevel = 127
+    }
     public enum GameStateContext {
         Checkpoint = 0,
         ChestID = 1,

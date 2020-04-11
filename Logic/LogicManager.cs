@@ -235,7 +235,8 @@ namespace LiveSplit.CatQuest2 {
                 case SplitChest.MountainCaveLocked: CheckChest("0af63589477f82945aa2b877c00644df"); break;
                 case SplitChest.NovemRuinsRed: CheckChest("15059423ac280e34c9c4207bd723c348"); break;
                 case SplitChest.OctoRuinsRed: CheckChest("9277eb480428d7348844065abebf916c"); break;
-                case SplitChest.OverworldNormal: CheckChest("168f647f9b55e6f44b4b468a423097ee", "c07ea8ca3d2f17e4e96fe000cc7ffcaa"); break;
+                case SplitChest.OverworldWood: CheckChest("a5f97bb3ac46ad94195acc4d27315a45", "c2ba8ab2967fd7a4aa9b496694905b66", "0cb76bf96be5d7041a8c8e3dee1f1c6a", "32e10476d83bfc14e87dbe532982c057"); break;
+                case SplitChest.OverworldNormal: CheckChest("168f647f9b55e6f44b4b468a423097ee", "c07ea8ca3d2f17e4e96fe000cc7ffcaa", "ec25c0a6f6c96a248991a9d0d6564c8d", "9704f3b46fb5902468652d3e8bc352ba"); break;
                 case SplitChest.OverworldGold:
                     CheckChest("2db77a7f0dfc74f4cbf566322e4c9af7", "1f0f329d03b01784790c66c030e904e8", "33186026b1b8bbe479525b1f734b3156", "6475bf47d06d6ef46a0f2b68fde3d115",
                         "0f7df55f8324e2b478a2801072f55a4f", "cd887538430b0c64bb407c5df18255ae", "006600b4d83b6bf4f9d1b682535cbb18", "32cdc08836889924084e74e34bba50dd",

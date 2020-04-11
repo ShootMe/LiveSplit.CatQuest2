@@ -21,11 +21,12 @@ namespace LiveSplit.CatQuest2 {
         public DateTime LastHooked { get; set; }
         private Dictionary<Context, Dictionary<int, CacheItem<IntPtr>>> contextCache = new Dictionary<Context, Dictionary<int, CacheItem<IntPtr>>>();
         private Dictionary<IntPtr, CacheItem<List<IntPtr>>> groupCache = new Dictionary<IntPtr, CacheItem<List<IntPtr>>>();
-        private Dictionary<string, Spell> currentSpells = new Dictionary<string, Spell>(StringComparer.OrdinalIgnoreCase);
-        private Dictionary<string, Quest> currentQuests = new Dictionary<string, Quest>(StringComparer.OrdinalIgnoreCase);
         private Dictionary<string, GuidItem> currentChests = new Dictionary<string, GuidItem>(StringComparer.OrdinalIgnoreCase);
-        private Dictionary<string, GuidItem> currentKeys = new Dictionary<string, GuidItem>(StringComparer.OrdinalIgnoreCase);
         private Dictionary<string, Equipment> currentEquipment = new Dictionary<string, Equipment>(StringComparer.OrdinalIgnoreCase);
+        private Dictionary<string, GuidItem> currentKeys = new Dictionary<string, GuidItem>(StringComparer.OrdinalIgnoreCase);
+        private Dictionary<string, Quest> currentQuests = new Dictionary<string, Quest>(StringComparer.OrdinalIgnoreCase);
+        private Dictionary<string, Spell> currentSpells = new Dictionary<string, Spell>(StringComparer.OrdinalIgnoreCase);
+
         public MemoryManager() {
             LastHooked = DateTime.MinValue;
         }

@@ -139,7 +139,9 @@ namespace LiveSplit.CatQuest2 {
         NovemRuinsRed,
         [Description("Octo Ruins (Red)")]
         OctoRuinsRed,
-        [Description("Overworld (Normal 2X)")]
+        [Description("Overworld (Wood 4X)")]
+        OverworldWood,
+        [Description("Overworld (Normal 4X)")]
         OverworldNormal,
         [Description("Overworld (Gold 16X)")]
         OverworldGold,

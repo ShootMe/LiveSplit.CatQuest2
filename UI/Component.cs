@@ -20,9 +20,9 @@ namespace LiveSplit.CatQuest2 {
         private bool isRunning = false;
         private bool shouldLog = false;
         private bool isAutosplitting = false;
-#if !Manager
+#if Console
         public static void Main(string[] args) {
-            Component component = new Component(null);
+            Component component = new Component(new LiveSplitState());
             component.log.EnableLogging = true;
             Application.Run();
         }
