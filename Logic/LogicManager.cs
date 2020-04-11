@@ -125,6 +125,9 @@ namespace LiveSplit.CatQuest2 {
                 case SplitType.RoyalArt:
                     CheckRoyalArt(split);
                     break;
+                case SplitType.SaveStone:
+                    CheckSaveStone();
+                    break;
                 case SplitType.Spell:
                     CheckSpell(split);
                     break;
@@ -136,6 +139,11 @@ namespace LiveSplit.CatQuest2 {
                 ShouldSplit = true;
                 splitLate = DateTime.MaxValue;
             }
+        }
+        private void CheckSaveStone() {
+            bool catnap = Memory.Catnap();
+            ShouldSplit = catnap && !lastBoolValue;
+            lastBoolValue = catnap;
         }
         private void CheckGameStart(int savedGame) {
             string scene = Memory.SceneName();

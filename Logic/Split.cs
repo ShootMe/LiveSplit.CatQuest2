@@ -25,6 +25,8 @@ namespace LiveSplit.CatQuest2 {
         QuestComplete,
         [Description("Royal Art")]
         RoyalArt,
+        [Description("Save Stone")]
+        SaveStone,
         [Description("Spell")]
         Spell
     }

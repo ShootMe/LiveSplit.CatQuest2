@@ -85,6 +85,11 @@ namespace LiveSplit.CatQuest2 {
             }
             return Program.Read<int>(entity, 0x8);
         }
+        public bool Catnap() {
+            IntPtr cache = GetCache(Context.Game, (int)GameContext.Catnap);
+            List<IntPtr> entities = GroupComponents(cache);
+            return entities.Count > 0;
+        }
         public IntPtr SavedGame() {
             IntPtr cache = GetCache(Context.GameState, (int)GameStateContext.SavedGame);
             return GroupSingleComponent(cache, (int)GameStateContext.SavedGame);
@@ -318,17 +323,7 @@ namespace LiveSplit.CatQuest2 {
         private List<IntPtr> ContextEntities(Context context) {
             //Contexts.sharedInstance.[context]._entities
             IntPtr entities = Contexts.Read<IntPtr>(Program, (int)context, 0x28);
-            //.Count
-            int count = Program.Read<int>(entities, 0x24);
-            List<IntPtr> returnVal = new List<IntPtr>(count);
-            //.Items
-            entities = Program.Read<IntPtr>(entities, 0x10);
-            byte[] data = Program.Read(entities + 0x10, count * 0x4);
-            for (int i = 0; i < count; i++) {
-                //.Items[i]
-                returnVal.Add(Program.Read<IntPtr>((IntPtr)BitConverter.ToUInt32(data, i * 0x4), 0x24));
-            }
-            return returnVal;
+            return GetGroupCache(entities);
         }
         private IntPtr GroupSingleComponent(IntPtr group, int componentID) {
             //group._entities.Count
@@ -361,7 +356,9 @@ namespace LiveSplit.CatQuest2 {
             for (int i = 0; i < count; i++) {
                 //.Items[i]._components
                 group = Program.Read<IntPtr>((IntPtr)BitConverter.ToUInt32(data, i * 0x4), 0x24);
-                entities.Add(group);
+                if (group != IntPtr.Zero) {
+                    entities.Add(group);
+                }
             }
             return entities;
         }

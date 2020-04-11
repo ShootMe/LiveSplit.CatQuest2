@@ -22,7 +22,8 @@ namespace LiveSplit.CatQuest2 {
         Keys,
         FinalQuest,
         Equipment,
-        TotalTime
+        TotalTime,
+        Catnap
     }
     public class LogManager {
         public const string LOG_FILE = "CatQuest2.txt";
@@ -114,6 +115,7 @@ namespace LiveSplit.CatQuest2 {
                         case LogObject.Dungeons: current = updateLog ? logic.Memory.DungeonsCleared().ToString() : previous; break;
                         case LogObject.RoyalArts: current = updateLog ? logic.Memory.PlayerRoyalArts().ToString() : previous; break;
                         case LogObject.FinalQuest: current = updateLog ? logic.Memory.FinalQuestCompleted().ToString() : previous; break;
+                        case LogObject.Catnap: current = updateLog ? logic.Memory.Catnap().ToString() : previous; break;
                     }
 
                     if (previous != current) {

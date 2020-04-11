@@ -13,11 +13,13 @@
     }
     public enum GameContext {
         IsActive = 0,
+        Catnap = 15,
         Health = 42,
         IsKilled = 51,
         IsMonster = 59,
         MonsterType = 60,
         IsNPC = 68,
+        Player = 72,
         Position = 77,
         Stats = 116,
         Unit = 125,
