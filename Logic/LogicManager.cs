@@ -83,7 +83,7 @@ namespace LiveSplit.CatQuest2 {
             int savedGame = (int)Memory.SavedGame();
             bool hasSavedGame = savedGame != 0;
 
-            if (!updateValues && !hasSavedGame && split.Type != SplitType.AreaEnter && split.Type != SplitType.AreaExit) {
+            if (!updateValues && !hasSavedGame && split.Type != SplitType.GameStart && split.Type != SplitType.AreaEnter && split.Type != SplitType.AreaExit) {
                 return;
             }
 
@@ -91,7 +91,7 @@ namespace LiveSplit.CatQuest2 {
                 case SplitType.ManualSplit:
                     break;
                 case SplitType.GameStart:
-                    CheckGameStart(savedGame);
+                    CheckGameStart();
                     break;
                 case SplitType.GameEnd:
                     CheckGameEnd();
@@ -131,7 +131,7 @@ namespace LiveSplit.CatQuest2 {
                     break;
             }
 
-            if (!hasSavedGame && Running && split.Type != SplitType.AreaEnter && split.Type != SplitType.AreaExit) {
+            if (!hasSavedGame && Running && split.Type != SplitType.GameStart && split.Type != SplitType.AreaEnter && split.Type != SplitType.AreaExit) {
                 ShouldSplit = false;
             } else if (DateTime.Now > splitLate) {
                 ShouldSplit = true;
@@ -143,14 +143,10 @@ namespace LiveSplit.CatQuest2 {
             ShouldSplit = catnap && !lastBoolValue;
             lastBoolValue = catnap;
         }
-        private void CheckGameStart(int savedGame) {
-            string scene = Memory.SceneName();
-            ShouldSplit = scene == "TitleScene" && savedGame != 0 && lastIntValue == 0;
-            if (ShouldSplit) {
-                Thread.Sleep(5);
-                ShouldSplit = Memory.TotalPlayTime().Ticks == 0;
-            }
-            lastIntValue = savedGame;
+        private void CheckGameStart() {
+            bool loading = Memory.IsLoading();
+            ShouldSplit = loading && !lastBoolValue && Memory.SceneName() == "TitleScene";
+            lastBoolValue = loading;
         }
         private void CheckGameEnd() {
             bool gameEnd = Memory.FinalQuestCompleted();
