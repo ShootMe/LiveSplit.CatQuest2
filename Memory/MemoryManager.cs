@@ -114,6 +114,51 @@ namespace LiveSplit.CatQuest2 {
             }
             return Program.Read<RoyalArts>(entity, 0x8);
         }
+        public void SetPlayerRoyalArts(RoyalArts royalArts) {
+            IntPtr cache = GetCache(Context.GameState, (int)GameStateContext.RoyalArts);
+            IntPtr entity = GroupSingleComponent(cache, (int)GameStateContext.RoyalArts);
+            if (entity == IntPtr.Zero) {
+                return;
+            }
+
+            Program.Write<RoyalArts>(entity, royalArts, 0x8);
+        }
+        public T PlayerStat<T>(StatsValue type) where T: unmanaged {
+            IntPtr cache = GetCache(Context.Game, (int)GameContext.Player);
+            List<IntPtr> players = GroupComponents(cache);
+            if (players == null || players.Count == 0) { return default(T); }
+
+            IntPtr entity = players[0];
+            IntPtr stats = Program.Read<IntPtr>(entity, 0x10 + ((int)GameContext.Stats * 0x4));
+            if (stats == IntPtr.Zero) { return default(T); }
+
+            return Program.Read<T>(stats, (int)type, 0xc);
+        }
+        public void SetPlayerStats(StatsValue type, float value) {
+            IntPtr cache = GetCache(Context.Game, (int)GameContext.Player);
+            List<IntPtr> players = GroupComponents(cache);
+            int count = players.Count;
+            for (int i = 0; i < count; i++) {
+                IntPtr entity = players[i];
+
+                IntPtr stats = Program.Read<IntPtr>(entity, 0x10 + ((int)GameContext.Stats * 0x4));
+                if (stats == IntPtr.Zero) { continue; }
+
+                switch (type) {
+                    case StatsValue.Attack:
+                    case StatsValue.AttackSpeed:
+                    case StatsValue.Defence:
+                    case StatsValue.Health:
+                    case StatsValue.IncreasedAttackSpeed:
+                    case StatsValue.Magic:
+                    case StatsValue.MagicBuff:
+                    case StatsValue.Mana:
+                    case StatsValue.PhysicalBuff: Program.Write<int>(stats, (int)value, (int)type, 0xc); break;
+                    case StatsValue.MoveSpeed:
+                    case StatsValue.RollDistance: Program.Write<float>(stats, value, (int)type, 0xc); break;
+                }
+            }
+        }
         public bool HasKey(string guid) {
             IntPtr cache = GetCache(Context.GameState, (int)GameStateContext.KeyID);
             List<IntPtr> entities = GetGroupCache(cache);

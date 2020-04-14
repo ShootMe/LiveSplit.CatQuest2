@@ -69,4 +69,17 @@
         SideQuest = 14,
         SubQuest = 15
     }
+    public enum StatsValue {
+        Health = 0x8,
+        Mana = 0xc,
+        Attack = 0x10,
+        Magic = 0x14,
+        Defence = 0x18,
+        MoveSpeed = 0x20,
+        RollDistance = 0x24,
+        AttackSpeed = 0x28,
+        IncreasedAttackSpeed = 0x2c,
+        PhysicalBuff = 0x58,
+        MagicBuff = 0x60
+    }
 }

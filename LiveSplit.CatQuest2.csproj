@@ -57,8 +57,7 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>Resources\cat.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Manager|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
@@ -129,6 +128,12 @@
     <Compile Include="UI\LogViewer.Designer.cs">
       <DependentUpon>LogViewer.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Manager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Manager.Designer.cs">
+      <DependentUpon>Manager.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\UserSplitSettings.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -146,6 +151,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Components\Updates.xml" />
+    <None Include="Resources\cat.ico" />
     <None Include="README.md" />
     <None Include="Resources\save.png" />
   </ItemGroup>
@@ -157,6 +163,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\LogViewer.resx">
       <DependentUpon>LogViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Manager.resx">
+      <DependentUpon>Manager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\UserSplitSettings.resx">
       <DependentUpon>UserSplitSettings.cs</DependentUpon>
