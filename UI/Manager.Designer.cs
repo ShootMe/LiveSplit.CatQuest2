@@ -438,6 +438,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(414, 303);
+            this.Controls.Add(this.lblNote);
             this.Controls.Add(this.lblValue2);
             this.Controls.Add(this.lblCurrent2);
             this.Controls.Add(this.lblPawerSmash);
@@ -477,7 +478,6 @@
             this.Controls.Add(this.lblMana);
             this.Controls.Add(this.txtHealth);
             this.Controls.Add(this.lblHealth);
-            this.Controls.Add(this.lblNote);
             this.Icon = global::LiveSplit.CatQuest2.Properties.Resources.cat;
             this.Name = "Manager";
             this.Text = "Manager";

@@ -71,6 +71,8 @@ namespace LiveSplit.CatQuest2.UI {
             }
         }
         private void ApplyChanges(RoyalArts royalArts = RoyalArts.All) {
+            if (Memory.SavedGame() == IntPtr.Zero) { return; }
+
             SetValue(StatsValue.Attack, txtAttack, txtCurrentAttack);
             SetValue(StatsValue.IncreasedAttackSpeed, txtAttackSpeed, txtCurrentAttackSpeed);
             SetValue(StatsValue.Defence, txtDefense, txtCurrentDefense);
