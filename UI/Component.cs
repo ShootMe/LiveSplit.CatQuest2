@@ -9,6 +9,7 @@ using System.Xml;
 using LiveSplit.Model;
 using LiveSplit.UI;
 using LiveSplit.UI.Components;
+using LiveSplit.View;
 namespace LiveSplit.CatQuest2 {
     public class Component : IComponent {
         public string ComponentName { get { return Factory.AutosplitterName; } }
@@ -20,6 +21,10 @@ namespace LiveSplit.CatQuest2 {
         private bool isRunning = false;
         private bool shouldLog = false;
         private bool isAutosplitting = false;
+        private RunEditorDialog editorDialog;
+        private System.ComponentModel.BindingList<ISegment> segmentList;
+        private Split oldSplit;
+        private DateTime lastRemovedSplit;
 #if Console && !Manager
         public static void Main(string[] args) {
             Component component = new Component(new LiveSplitState());
@@ -156,7 +161,39 @@ namespace LiveSplit.CatQuest2 {
                 log.AddEntry(new EventLogEntry($"Split Auto {Model.CurrentState.CurrentTime.RealTime.Value}"));
             }
         }
-        public void Update(IInvalidator invalidator, LiveSplitState lvstate, float width, float height, LayoutMode mode) { }
+        public void Update(IInvalidator invalidator, LiveSplitState lvstate, float width, float height, LayoutMode mode) {
+            if (editorDialog == null && Form.ActiveForm is RunEditorDialog runEditor) {
+                PropertyInfo info = typeof(RunEditorDialog).GetProperty("SegmentList", BindingFlags.Instance | BindingFlags.NonPublic);
+                segmentList = info.GetValue(runEditor) as System.ComponentModel.BindingList<ISegment>;
+                if (segmentList != null) {
+                    editorDialog = runEditor;
+                    segmentList.ListChanged += SegmentList_ListChanged;
+                    runEditor.FormClosed += RunEditor_FormClosed;
+                }
+            }
+        }
+        private void RunEditor_FormClosed(object sender, FormClosedEventArgs e) {
+            editorDialog.FormClosed -= RunEditor_FormClosed;
+            editorDialog = null;
+            segmentList.ListChanged -= SegmentList_ListChanged;
+            segmentList = null;
+        }
+        private void SegmentList_ListChanged(object sender, System.ComponentModel.ListChangedEventArgs e) {
+            if (e.ListChangedType == System.ComponentModel.ListChangedType.ItemAdded) {
+                if (oldSplit != null && DateTime.Now < lastRemovedSplit) {
+                    oldSplit.Name = "splitChangedValue";
+                    userSettings.Settings.Autosplits.Insert(e.NewIndex + 1, oldSplit);
+                    oldSplit = null;
+                } else {
+                    userSettings.Settings.Autosplits.Insert(e.NewIndex + 1, new Split() { Name = "splitChangedValue", Type = SplitType.ManualSplit });
+                }
+            } else if (e.ListChangedType == System.ComponentModel.ListChangedType.ItemDeleted) {
+                oldSplit = userSettings.Settings.Autosplits[e.NewIndex + 1];
+                lastRemovedSplit = DateTime.Now.AddSeconds(0.1);
+                userSettings.Settings.Autosplits.RemoveAt(e.NewIndex + 1);
+                userSettings.Settings.Autosplits[userSettings.Settings.Autosplits.Count - 1].Name = "splitChangedValue";
+            }
+        }
         public Control GetSettingsControl(LayoutMode mode) { return userSettings; }
         public void SetSettings(XmlNode document) { userSettings.InitializeSettings(document); }
         public XmlNode GetSettings(XmlDocument document) { return userSettings.UpdateSettings(document); }
