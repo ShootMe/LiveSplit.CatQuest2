@@ -143,7 +143,7 @@ namespace LiveSplit.CatQuest2 {
         OverworldWood,
         [Description("Overworld (Normal 4X)")]
         OverworldNormal,
-        [Description("Overworld (Gold 16X)")]
+        [Description("Overworld (Gold 19X)")]
         OverworldGold,
         [Description("Path to Lupus Tomb (Wood)")]
         PathToLupusTombWood,

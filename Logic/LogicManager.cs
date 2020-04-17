@@ -244,7 +244,8 @@ namespace LiveSplit.CatQuest2 {
                     CheckChest("2db77a7f0dfc74f4cbf566322e4c9af7", "1f0f329d03b01784790c66c030e904e8", "33186026b1b8bbe479525b1f734b3156", "6475bf47d06d6ef46a0f2b68fde3d115",
                         "0f7df55f8324e2b478a2801072f55a4f", "cd887538430b0c64bb407c5df18255ae", "006600b4d83b6bf4f9d1b682535cbb18", "32cdc08836889924084e74e34bba50dd",
                         "251831bcce2ecb6459eb20fac1ad911b", "9bb2ed0d13474cf42b64eb70fdf07766", "6d9d8999ecfbb4c49b9a81c19a59e0b5", "1939c80b928b3d149a74619a5f59d04a",
-                        "4ab69478de7a44546a35e619258cc84f", "d800d45da6a23ea448ada42a8b95405f", "80e03f1b9e9a19b449975ffc5983e709", "6fad584068801324ca857d8c892ee125");
+                        "4ab69478de7a44546a35e619258cc84f", "d800d45da6a23ea448ada42a8b95405f", "80e03f1b9e9a19b449975ffc5983e709", "6fad584068801324ca857d8c892ee125",
+                        "11df4ae020778a341817da1ddfaf815c", "2a7886bc39504194e9cd9baa64577e67", "b684a35d2508e644fa9555f3b8aafe0f");
                     break;
                 case SplitChest.PathToLupusTombWood: CheckChest("bf83c3b2b2a51bb40aa5cc4813037ab9"); break;
                 case SplitChest.PathToLupusTombNormal: CheckChest("d99133cee5351db47802d3887a5fb604"); break;
