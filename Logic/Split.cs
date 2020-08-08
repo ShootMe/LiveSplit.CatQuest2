@@ -7,27 +7,27 @@ namespace LiveSplit.CatQuest2 {
         AreaEnter,
         [Description("Area (Exit)")]
         AreaExit,
-        [Description("Chest")]
+        [Description("Chest (Invalid)")]
         Chest,
-        [Description("Dungeon")]
+        [Description("Dungeon (Invalid)")]
         DungeonComplete,
-        [Description("Game Start")]
+        [Description("Game Start (Invalid)")]
         GameStart,
-        [Description("Game End")]
+        [Description("Game End (Invalid)")]
         GameEnd,
-        [Description("Key")]
+        [Description("Key (Invalid)")]
         Key,
-        [Description("Level")]
+        [Description("Level (Invalid)")]
         Level,
-        [Description("Quest (Start)")]
+        [Description("Quest (Start) (Invalid)")]
         QuestStart,
-        [Description("Quest (End)")]
+        [Description("Quest (End) (Invalid)")]
         QuestComplete,
-        [Description("Royal Art")]
+        [Description("Royal Art (Invalid)")]
         RoyalArt,
-        [Description("Save Stone")]
+        [Description("Save Stone (Invalid)")]
         SaveStone,
-        [Description("Spell")]
+        [Description("Spell (Invalid)")]
         Spell
     }
     public class Split {
